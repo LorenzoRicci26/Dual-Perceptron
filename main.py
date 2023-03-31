@@ -35,8 +35,7 @@ def main():
 
     y_predicted = model.predict(X, Y)
 
-    if (Y == y_predicted).all():
-        print("Ce l'hai fatta Goku !!!")
+    print(y_predicted)
        
 if __name__ == "__main__":
     main()
