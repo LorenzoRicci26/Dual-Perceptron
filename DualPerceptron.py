@@ -2,7 +2,8 @@ import numpy as np
 
 class DualPerceptron:
 
-    def __init__(self):
+    def __init__(self, kernel):
+        self.kernel = kernel
         self.alpha = None
         self.b = None
         self.R = None
@@ -27,8 +28,10 @@ class DualPerceptron:
     def summatory(self, i, l, X, y):
         sum = 0
         for j in range (l):
-            scalar_product = np.dot(X[j], X[i])
-            sum += self.alpha[j] * y[j] * scalar_product
+            kernel_result = self.kernel[i,j]
+            print(kernel_result)
+            #scalar_product = np.dot(X[j], X[i])
+            sum += self.alpha[j] * y[j] * kernel_result
         return sum
     
     def predict(self, X, y):

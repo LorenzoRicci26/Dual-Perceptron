@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 
 from DualPerceptron import DualPerceptron
+from KernelFunction import KernelFunctions
 
 def main():
     df = pd.read_csv('cmp\iris_data.csv', names = ["Sepal Lenght", "Sepal Width", "Petal Lenght", "Petal Width", "Class"])
@@ -14,6 +15,12 @@ def main():
         else:
             Y[i] = 1
     
+    kernel = KernelFunctions()
+    
+    kernel_function = kernel.rbf_kernel(X, var=0.5, gamma=0.1)
+
+    print(kernel_function, kernel_function.shape)
+
     """
     alpha = np.zeros(X.shape[0])
 
@@ -29,7 +36,7 @@ def main():
     print(result.shape)
     """
 
-    model = DualPerceptron()
+    model = DualPerceptron(kernel_function)
 
     model.train(X, Y, 1000)
 
