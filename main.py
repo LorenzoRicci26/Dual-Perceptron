@@ -14,12 +14,6 @@ def main():
             Y[i] = -1
         else:
             Y[i] = 1
-    
-    kernel = KernelFunctions()
-    
-    kernel_function = kernel.rbf_kernel(X, var=0.5, gamma=0.1)
-
-    print(kernel_function, kernel_function.shape)
 
     """
     alpha = np.zeros(X.shape[0])
@@ -35,8 +29,7 @@ def main():
 
     print(result.shape)
     """
-
-    model = DualPerceptron(kernel_function)
+    model = DualPerceptron(kernel_type = 2)
 
     model.train(X, Y, 1000)
 
