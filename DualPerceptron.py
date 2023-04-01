@@ -29,7 +29,8 @@ class DualPerceptron:
             for i in range(n_samples):
                 for j in range(n_samples):
                     # Creo la Gramm Matrix (n_samples, n_samples)
-                    self.K[i,j] = self.kernel.rbf_kernel(X, var = 2, gamma = 0.5) 
+                    self.K[i,j] = self.kernel.rbf_kernel(X[i], X[j], 0.2) 
+                    print(self.K)
                 
 
         for epoch in range(epochs):
