@@ -3,9 +3,9 @@ from KernelFunction import KernelFunctions
 
 class DualPerceptron:
 
-    def __init__(self, kernel_type):
-        self.kernel_type = kernel_type
-        self.kernel = KernelFunctions()
+    def __init__(self, kernel_matrix):
+        self.kernel_matrix = kernel_matrix
+        #self.kernel = KernelFunctions()
         self.K = None
         self.alpha = None
         self.b = None
@@ -17,8 +17,9 @@ class DualPerceptron:
         self.alpha = np.zeros(n_samples)
         self.b = 0
         self.R = np.linalg.norm(X, ord=np.inf)
-        self.K = np.zeros((n_samples, n_samples))
-
+        #self.K = np.zeros((n_samples, n_samples))
+        
+        """
         if self.kernel_type == 1:
             for i in range(n_samples):
                 for j in range(n_samples):
@@ -31,12 +32,12 @@ class DualPerceptron:
                     # Creo la Gramm Matrix (n_samples, n_samples)
                     self.K[i,j] = self.kernel.rbf_kernel(X[i], X[j], 0.2) 
                     print(self.K)
-                
+        """
 
         for epoch in range(epochs):
             errors = 0
             for i in range(n_samples):
-                y_hat = self.summatory(i, self.alpha.shape[0], self.K, y) + self.b
+                y_hat = self.summatory(i, self.alpha.shape[0], y) + self.b
                 if y[i] * y_hat <= 0:
                     self.alpha[i] += 1
                     self.b += y[i] * self.R ** 2
@@ -44,20 +45,20 @@ class DualPerceptron:
             if errors == 0:
                 break
     
-    def summatory(self, i, l, K, y):
+    def summatory(self, i, l, y):
         sum = 0
         for j in range (l):
-            sum += self.alpha[j] * y[j] * K[i,j]
+            sum += self.alpha[j] * y[j] * self.kernel_matrix[i,j]
         return sum
     
     def predict(self, X, y):
         y_pred = np.zeros(X.shape[0])
         for i in range(y_pred.shape[0]):
-            y_pred[i] = self.decision_function(i, y.shape[0], self.K, y)
+            y_pred[i] = self.decision_function(i, y.shape[0], y)
         return y_pred
     
-    def decision_function(self, i, l, K, y):
-        return np.sign(self.summatory(i, l, K, y) + self.b)
+    def decision_function(self, i, l, y):
+        return np.sign(self.summatory(i, l, y) + self.b)
 
 
     """
