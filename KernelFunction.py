@@ -5,27 +5,33 @@ class KernelFunctions:
     def __init__(self) -> None:
         pass
 
-    def rbf_kernel(self, X, Y, gamma):
+    def rbf_kernel(self, X, gamma=1):
+        """
+        RBF kernel mapping for a given set of data X.
+        Parameters:
+            X: array-like, shape = [n_samples, n_features]
+                Input data.
+            gamma: float, default = 1
+                Hyperparameter for tuning the influence of each sample.
+        Returns:
+            K: array-like, shape = [n_samples, n_samples]
+                Kernel matrix of the mapped data.
+        """
+        n_samples = X.shape[0]
+        K = np.zeros((n_samples, n_samples))
+        for i in range(n_samples):
+            for j in range(n_samples):
+                K[i,j] = np.exp(-gamma * np.linalg.norm(X[i] - X[j])**2)
+        return K
 
-        # Calcola le distanze quadrate tra le righe di X e Y
-        dist_squared = np.sum(X**2, axis=1)[:, np.newaxis] + np.sum(Y**2, axis=1) - 2 * np.dot(X, Y.T)
-
-        # Calcola il kernel RBF
-        return np.exp(-gamma * dist_squared)
-
-    def polynomial_kernel(self, X, Y, degree=2):
+    def polynomial_kernel(self, X, degree=2):
 
         # Calcola il prodotto tra le righe di X e Y
-        dot_product = np.dot(X, Y.T)
+        dot_product = np.dot(X, X.T)
 
         # Calcola il kernel polinomiale
         return (dot_product + 1) ** degree
 
-    def gaussian_kernel(self, X, Y, sigma):
-
-        # Calcola le distanze quadrate tra le righe di X e Y
-        dist_squared = np.sum(X**2, axis=1)[:, np.newaxis] + np.sum(Y**2, axis=1) - 2 * np.dot(X, Y.T)
-
-        # Calcola il kernel gaussiano
-        return np.exp(-dist_squared / (2 * sigma**2))
+    def linear_kernel(self, X):
+        return np.dot(X, X.T)
     

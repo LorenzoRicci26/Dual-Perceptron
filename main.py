@@ -1,64 +1,51 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from sklearn import preprocessing, metrics
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
 
-from DualPerceptron import DualPerceptron
+from DualPerceptronImpl import MyDualPerceptron
 from KernelFunction import KernelFunctions
 
 
 def main():
-    df = pd.read_csv('cmp\iris_data.csv', names = ["Sepal Lenght", "Sepal Width", "Petal Lenght", "Petal Width", "Class"])
+
+    kf = KernelFunctions()
+    df = pd.read_csv('cmp/iris_data.csv', names = ["Sepal Lenght", "Sepal Width", "Petal Lenght", "Petal Width", "Class"])
+
+    le = preprocessing.LabelEncoder()
+    for i in range(df.shape[1] - 1):
+        newvals = le.fit_transform(df.iloc[:, i])
+        df[df.columns[i]] = newvals
     
-    X = df.iloc[: , :4].values
-    y = df.iloc[:, 4].map({'Iris-setosa' : -1, 'Iris-versicolor' : 1, 'Iris-virginica' : 1}).values
+    X = df.iloc[: , :- 1].values #Data
+    y = df.iloc[:, -1].values #Target
+    y = np.where ( y == 'Iris-setosa', -1, 1)
 
-    kernel_function = KernelFunctions()
-    kernel_matrix = None
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33)
 
-    print('Quale tipologia di Kernel vuoi utilizzare? 1: polynomial_kernel, 2: gaussian_kernel, 3: rbf_kernel')
+    #Vado a mappare il mio set di dati attraverso un metodo kernel 
+    X_train_mapped = kf.rbf_kernel(X_train)
+    X_test_mapped = kf.rbf_kernel(X_test)
 
-    kernel_type = input('Choose : ')
+    perceptron = MyDualPerceptron(X_train_mapped, X_test_mapped)
+    
+    perceptron.train(X_train, y_train)
 
-    if kernel_type == '1':
-        kernel_matrix = kernel_function.polynomial_kernel(X, X, degree=3)
-    elif kernel_type == '2':
-        kernel_matrix = kernel_function.gaussian_kernel(X, X, sigma = 0.5)
-    elif kernel_type == '3':
-        kernel_matrix = kernel_function.rbf_kernel(X, X, gamma = 0.3)
-    else:
-        print("Hai inserito un valore di input errato !!!")
+    y_pred = perceptron.predict(X_test, y_test)
 
+    print('Da prevedere: ' + str(y_test))
+    print('Predetto: ' + str(y_pred))
+
+    accuracy = accuracy_score(y_test, y_pred)
+    print('Accuracy:', accuracy)
+    
     """
-    # Crea una figura e un'area degli assi
-    fig = plt.figure()
-    ax = fig.add_subplot(111, projection='3d')
-    
-    # Traccia gli esempi di Iris Setosa con cerchi rossi
-    ax.scatter(X[y == -1, 0], X[y == -1, 1], X[y ==-1, 2], X[y==-1, 3], c='r', marker='o', label='Iris Setosa')
-
-    # Traccia gli esempi di Iris Versicolor e Virginica con cerchi blu
-    ax.scatter(X[y == 1, 0], X[y == 1, 1], X[y == 1, 2], X[y== 1, 3], c='b', marker='o', label='Iris Versicolor and Virginica')
-
-    # Aggiungi una legenda
-    ax.legend()
-
-    # Aggiungi etichette degli assi
-    ax.set_xlabel('Sepal Length')
-    ax.set_ylabel('Sepal Width')
-    ax.set_zlabel('Petal Lenght')
-
-    # Mostra la figura
-    plt.show()
+    y_test = y_test.astype(int)
+    fpr, tpr, thresholds = metrics.roc_curve(y_test, y_pred)
+    print(metrics.auc(fpr, tpr))
+    print("ACCURACY:", metrics.accuracy_score(y_test, y_pred))
     """
-    
-    perceptron = DualPerceptron(kernel_matrix)
-
-    perceptron.train(X, y)
-
-    y_predicted = perceptron.predict(X, y)
-
-    print(y_predicted)
-    
-       
 if __name__ == "__main__":
     main()
