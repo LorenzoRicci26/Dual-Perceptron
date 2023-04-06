@@ -1,0 +1,2 @@
+\contentsline {section}{\numberline {1}Introduzione algoritmo}{3}{}%
+\contentsline {section}{\numberline {2}Implementazione}{4}{}%
