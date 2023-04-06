@@ -1,0 +1,119 @@
+Test Dual Perceptron : 
+
+1) Bank: 
+1)Linear_kernel: Data_Train (2759, 20), Data_Test(1360, 20) Time taken to map the data with the Kernel method choosen is 0.09170279999989361s
+Time taken to train the data is 2246.1146452000003s
+Time taken to predict the target is 0.550897999999961s
+Accuracy: 0.8838235294117647
+Time taken to run the the entire program is 2250.7912963s
+
+2)Polynomial_kernel: 
+
+2) Adult: 
+1)Linear_Kernel: Data_Train (3350,14), Data_Test(1650,14) Time taken to map the data with the Kernel method choosen is 0.10594949999995151s
+Time taken to train the data is 6.626337100000455s
+Time taken to predict the target is 0.7866966999999931s
+Da prevedere: [1 1 1 ... 1 1 1]
+Predetto: [1. 1. 1. ... 1. 1. 1.]
+Accuracy: 1.0
+Time taken to run the the entire program is 15.869211199999882s
+          
+2)Polynomial_Kernel: Time taken to map the data with the Kernel method choosen is 0.18180579999989277s
+Time taken to train the data is 7.1606088999997155s
+Time taken to predict the target is 0.8775040999998964s
+Da prevedere: [1 1 1 ... 1 1 1]
+Predetto: [1. 1. 1. ... 1. 1. 1.]
+Accuracy: 1.0
+
+3)RBF_Kernel: Time taken to map the data with the Kernel method choosen is 39.595336499999576s
+Time taken to train the data is 5.800569200000609s
+Time taken to predict the target is 0.711608100000376s
+Da prevedere: [1 1 1 ... 1 1 1]
+Predetto: [1. 1. 1. ... 1. 1. 1.]
+Accuracy: 1.0
+Time taken to run the the entire program is 49.5626014999998s
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Tutti i test fatti su un addestramento di 1000 epoche 
+
+1)Breast Cancer Wisconsin (Diagnostic)
+
+n_features = 30
+
+Linear_Kernel = 32,3%, 45%, 36%
+
+Polynomial_Kernel = Risultati con (c=1, d=2): 43%
+                                  (c=1, d=3): 38%
+                                  (c=1, d=n_features): 35%
+                                  (c=1, d=9): 38%
+                                  (c=1, d= 1/10): 
+
+RBF_kernel = Da gamma=17 100% di accuracy
+     
+2)Adult 
+
+n_features = 14
+
+Linear_Kernel = 100% Il vettore dei pesi in forma duale è: [1. 0. 0. ... 0. 0. 0.]
+                     Il bias è: 478165689.0
+                     Time taken to train the data is 349.7842515999946s
+                     Time taken to predict the target is 18.699715499999s
+
+Polynomial_Kernel = Risultati con (c=1, d=2): Time taken to train the data is 414.05723290001333s
+                                              Time taken to predict the target is 22.549602300001425s
+                                              Accuracy: 1.0
+                    Risultati con (c=1, d=3): Ci mette un tempo infinito stoppato 
+
+RBF_kernel =  
+
+
+3)Heart Disease Cleveland 
+
+RBF_Kernel(gamma = 1 / n_features)
+Polynomial_Kernel(c=1 , d=3)
+
+RBF_kernel = 80% , 78%, 76%, 78%, 76% tutti questi con gamma=100 | (con gamma= 1/ n_features) 87%, 82%, 83%, 85% 
+Polynomial_Kernel = 56% (c=1, d=3) , 56% (c=100, d=3), 42% (c=1000, d=3), 54% (c=0,5, d=3),52% (c=1, d=3), 50% (c=2, d=3), 61% (c=3, d=3),48% (c=4, d=3), 48% (c=5, d=5),51% (c=2, d=2), 60% (c=3, d=3),50% (c=3, d=6),52% (c=1, d=3),61% (c=1, d=3),56% (c=1, d=3),53% (c=1, d=3)
+
+
+Linear_kernel = Accuracy : 50%, 51%, 48% 
+
+Polynomial_Kernel = Risultati con (c=1 e d=3): 53%, 49%, 51% 
+                    Risultati con (c=3 e d=3): 52,5%, 53%, 48%
+
+con n_features = 13
+
+RBF_kernel = Risultati con (gamma= 1/n_features): 82%, 80%, errata(presenza di uno 0 nella predizione) 
+             Risultati con (gamma= 1): errati
+             Risultati con (gamma= 10, 100, 1000, 10000): errati
+             Risultati con (gamma= 1/2): 86%, errato
+             Risultati con (gamma= 1 / n_features * 2): 82%, 88%, 81%, errore 
+             Risultati con (gamma= 1 / 100): Buoni tutti intorno all'85%
+             Risultati con (gamma= 1 / 1000): Ci mette molto più tempo a fare il train e 68%
+             Risultati con (gamma= 1 / 500): Ci metto molto più tempo a fare il train  73%
+             
+Riassumendo con 1/100 < gamma < 1/10 risultati buoni 
+
+
+4)Rice (Cammeo o Osrick) 
+
+con n_features = 7
+
+1) Linear_kernel = Time taken to train the data is 2371.483619700004s
+                   Time taken to predict the target is 0.2640354999966803s
+                   Accuracy: 58% ma sono tutti 1 
+
+2) Polynomial_kernel = Risultati con (c=1, d=3): Time taken to train the data is 2933.835633499999s
+                                                 Time taken to predict the target is 0.5786790999991354s
+                                                 Accuracy: 42%
+
+3) RBF_kernel = Risultati con (gamma=1): errori
+                              (gamma=10): errori
+                              (gamma=17):errori
+                              (gamma = 1000): 100% accuracy
+
+
+
+
