@@ -23,33 +23,45 @@
 		\Large Università degli studi di Firenze\\ Corso di Laurea in Ingegneria Informatica\\ Intelligenza Artificiale\\ A.S. 22/23
 	\end{center}
 	\tableofcontents \newpage
-    \section{Introduzione algoritmo}
-    Il primo algoritmo iterativo per l'apprendimento di classificazioni lineari è la procedura proposta da Frank Rosenblatt nel 1956 per il perceptron. E' una procedura \textit{on-line} e \textit{mistake-driven},
-    che inizia con un vettore peso iniziale \textbf{w0} (solitamente inizializzato tutto a 0, \textbf{w0=0}) e si adatta ogni volta che un punto, che sta venendo addestrato, viene malclassificato dai pesi attuali.
-    L'algoritmo aggiorna il vettore peso e il bias direttamente. Inoltre questa procedura ha garantita la convergenza dall'esistenza di un iperpiano che classifica correttamente i punti su cui lo si sta facendo addestrare, e in questo
-    caso si dice che i dati sono \textit{linearmente separabili}. Quindi, viceversa, se non esiste un iperpiano i dati si dicono non separabili. Si definisce \textit{margine funzionale di un esempio} ({$\textbf{x}_i$},$y_i$) con rispetto all'iperpiano (\textbf{w},b), la quantità:
-    \begin{center}
-        $\gamma_i$ = $y_i$(⟨$x_i$, $x_j$⟩+$b$) 
-    \end{center}
-    e si nota che se $\gamma$ > 0 implica una corretta classificazione di ({$\textbf{x}_i$},$y_i$).
-    L'algoritmo Perceptron lavora quindi, aggiungendo esempi di addestramento positivi classificati in modo errato o sottraendo quelli negarivi classificati in modo errato ad un vettore peso scelto all'inizio in modo aribitrario.
-    Senza perdita di generalità, se si assume che il vettore peso iniziale è un vettore zero, e che l'ipotesi finale sarà quella di essere una combinazione lineare dei punti di addestramento, possiamo ridefinire il vettore peso: 
-    \begin{center}
-        $\textbf{w}$ = $\displaystyle\sum_{i=1}^l \alpha_iy_i\textbf{x}_i$
-    \end{center}
-    dove, dal momento in cui il segno del coefficiente di $\textbf{x}_i$ è dato dalla classificazione di $y_i$, gli $\alpha_i$ sono volori positivi proporzionali al numero di volte in cui una classificazione errata di $\textbf{x}_i$ ha causato l'aggiornamento del peso.
-    Punti che hanno causato pochi errori avranno un valore più piccolo di $\alpha_i$, viceversa punti più difficili avranno questo valore più grande.
-    Quindi fissato un set di addestramento S, si può pensare al vettore \textbf{$\alpha$} come rappresentazione alternativa dell'ipotesi in coordinate diverse o duali.
-    \newpage
-    \section{Implementazione} 
-    Lo scopo del seguente progetto è quello di implementare l'algoritmo nella sua forma duale descritto in (Cristianini \& Shawe-Taylor 1999), permettendo l'uso di funzioni kernel al posto del prodotto
-    scalare ⟨xi, xj⟩.
-    \begin{center}
-        \includegraphics[width=0.7\linewidth]{pseudocodice_perceptron.png}
-        \label{The Perceptron Algorithm (dual form)}
-    \end{center}
-    Come mostrato in (figura \ref*{The Perceptron Algorithm (dual form)}) l'algoritmo sfrutta un training set S, ovvero dati che servono al Perceptron per addestrare i parametri del classificatore: 
+	\section{Introduzione algoritmo}
+	Il primo algoritmo iterativo per l'apprendimento di classificazioni lineari è la procedura proposta da Frank Rosenblatt nel 1956 per il perceptron. E' una procedura \textit{on-line} e \textit{mistake-driven},
+	che inizia con un vettore peso iniziale \textbf{w0} (solitamente inizializzato tutto a 0, \textbf{w0=0}) e si adatta ogni volta che un punto, che sta venendo addestrato, viene malclassificato dai pesi attuali.
+	L'algoritmo aggiorna il vettore peso e il bias direttamente. Inoltre questa procedura ha garantita la convergenza dall'esistenza di un iperpiano che classifica correttamente i punti su cui lo si sta facendo addestrare, e in questo
+	caso si dice che i dati sono \textit{linearmente separabili}. Quindi, viceversa, se non esiste un iperpiano i dati si dicono non separabili. Si definisce \textit{margine funzionale di un esempio} ({$\textbf{x}_i$},$y_i$) con rispetto all'iperpiano (\textbf{w},b), la quantità:
+	\begin{center}
+		$\gamma_i$ = $y_i$(⟨$x_i$, $x_j$⟩+$b$) 
+	\end{center}
+	e si nota che se $\gamma$ > 0 implica una corretta classificazione di ({$\textbf{x}_i$},$y_i$).
+	L'algoritmo Perceptron lavora quindi, aggiungendo esempi di addestramento positivi classificati in modo errato o sottraendo quelli negarivi classificati in modo errato ad un vettore peso scelto all'inizio in modo aribitrario.
+	Senza perdita di generalità, se si assume che il vettore peso iniziale è un vettore zero, e che l'ipotesi finale sarà quella di essere una combinazione lineare dei punti di addestramento, possiamo ridefinire il vettore peso: 
+	\begin{center}
+		$\textbf{w}$ = $\displaystyle\sum_{i=1}^l \alpha_iy_i\textbf{x}_i$
+	\end{center}
+	dove, dal momento in cui il segno del coefficiente di $\textbf{x}_i$ è dato dalla classificazione di $y_i$, gli $\alpha_i$ sono volori positivi proporzionali al numero di volte in cui una classificazione errata di $\textbf{x}_i$ ha causato l'aggiornamento del peso.
+	Punti che hanno causato pochi errori avranno un valore più piccolo di $\alpha_i$, viceversa punti più difficili avranno questo valore più grande.
+	Quindi fissato un set di addestramento S, si può pensare al vettore \textbf{$\alpha$} come rappresentazione alternativa dell'ipotesi in coordinate diverse o duali.
+	\section{Implementazione} 
+	Lo scopo del seguente progetto è quello di implementare l'algoritmo nella sua forma duale descritto in (Cristianini \& Shawe-Taylor 1999), permettendo l'uso di funzioni kernel al posto del prodotto
+	scalare ⟨xi, xj⟩.
+	\begin{center}
+		\includegraphics[width=0.7\linewidth]{pseudocodice_perceptron.png}
+		\label{The Perceptron Algorithm (dual form)}
+	\end{center}
+	\subsection{KernelFunctions}
+	La classe KernelFunctions fornisce tre metodi, uno per ogni tipologia di funzione kernel. 
+	\begin{itemize}
+		\item Linear kernel: prende in ingresso una matrice X e ritorna il prodotto scalare tra X e X trasposta.
+		\item Polynomial kernel: prende in ingresso una matrice X, un paramentro c, che viene sommato al prodotto scalare come nel kernel lineare e un ultimo paramento d che definisce il grado del polinomio. 
+		\item RBF kernel: prende in ingresso una matrice X e un parametro gamma e ritorna l'esponenziale della norma negativa moltiplicata per -gamma, il cui tutto è elevato al quadrato.
+	\end{itemize}
+    \subsection{MyDualPerceptron}
+    La mia implementazione dell'algoritmo consiste nella classe MyDualPerceptron. Il costruttore prende in ingresso la tipologia di kernel che si vuole utilizzare, ovvero un numero: 1 per il kernel lineare, 2 per il kernel polinomiale e 3 per l'rbf kernel. Lo pseudocodice mostrato in Table 2.2 viene implementato nel metodo \textit{train()}, che prende in ingresso X, y, epochs. In particolare:
     \begin{itemize}
-        \item $\alpha$ : 
+    	\item X: Porzione di data set, ovvero i dati che verrano utilizzati per addestrare il vettore alpha e il bias.
+    	\item y: Porzione di data set, ovvero il vettore dei target di addestramento.
+    	\item epochs: il numero di epoche(iterazioni) del ciclo for sul quale si vuole addestrare l'algoritmo.
     \end{itemize}
+	Inoltre all'interno del metodo \textit{train()}, in base al tipo di kernel scelto dall'utente vengono mappati i dati di addestramento X e quindi creata la matrice K (nsamples,nsamples). Infine si utilizza un ciclo for per implementare il repeat dal quale si uscirà quando all'interno del ciclo for interno non ci saranno errori.
+    Una volta eseguita la funzione di \textit{train()} che addestra i propri parametri alpha e b (bias), verrà chiamato il metodo \textit{predict()} che prende anche lui in ingresso X e y, i quali però non saranno uguali a quelli del \textit{train()}, ma saranno un'altra porzione di data set che viene utilizzata per testare l'accuracy dell'algoritmo nel predire i dati del target in output.
+    \subsection{}
 \end{document}

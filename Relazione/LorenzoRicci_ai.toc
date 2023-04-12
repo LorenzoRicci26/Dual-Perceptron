@@ -1,2 +1,4 @@
 \contentsline {section}{\numberline {1}Introduzione algoritmo}{3}{}%
-\contentsline {section}{\numberline {2}Implementazione}{4}{}%
+\contentsline {section}{\numberline {2}Implementazione}{3}{}%
+\contentsline {subsection}{\numberline {2.1}KernelFunctions}{4}{}%
+\contentsline {subsection}{\numberline {2.2}MyDualPerceptron}{4}{}%

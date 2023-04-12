@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.2.6)  6 APR 2023 12:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.2.6)  12 APR 2023 23:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -177,39 +177,40 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line 20.
  [1
 
-{C:/Users/ricci/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./Unifi_nuovo.svg.png>] (LorenzoRicci_ai.toc)
+{C:/Users/ricci/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./Unifi_nuovo.svg.png>] (LorenzoRicci_ai.toc
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 3.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 3.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 3.
+)
 \tf@toc=\write3
 \openout3 = `LorenzoRicci_ai.toc'.
 
  [2]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 30.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 30.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 30.
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 32.
  (C:\Users\ricci\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) [3]
-<pseudocodice_perceptron.png, id=24, 874.01532pt x 564.60938pt>
+)
+<pseudocodice_perceptron.png, id=15, 874.01532pt x 564.60938pt>
 File: pseudocodice_perceptron.png Graphic file (type png)
 <use pseudocodice_perceptron.png>
-Package pdftex.def Info: pseudocodice_perceptron.png  used on input line 48.
+Package pdftex.def Info: pseudocodice_perceptron.png  used on input line 47.
 (pdftex.def)             Requested size: 241.49895pt x 156.00465pt.
- [4 <./pseudocodice_perceptron.png>] (LorenzoRicci_ai.aux) ) 
+ [3] [4 <./pseudocodice_perceptron.png>] [5] (LorenzoRicci_ai.aux) ) 
 Here is how much of TeX's memory you used:
- 2227 strings out of 476374
- 38199 string characters out of 5788855
- 1856340 words of memory out of 5000000
- 22592 multiletter control sequences out of 15000+600000
- 562718 words of font info for 61 fonts, out of 8000000 for 9000
+ 2228 strings out of 476374
+ 38213 string characters out of 5788855
+ 1857340 words of memory out of 5000000
+ 22593 multiletter control sequences out of 15000+600000
+ 565716 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,7n,62p,372b,226s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,7n,62p,477b,226s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {C:/Users/ricci/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/ricci/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}{C:/Users/ricci/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}{C:/Users/ricci/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/ricci/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}<C:/Users/ricci/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/ricci/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/ricci/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/ricci/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/ricci/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi7.pfb><C:/Users/ricci/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/ricci/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/ricci/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/ricci/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb>
-Output written on LorenzoRicci_ai.pdf (4 pages, 503876 bytes).
+Output written on LorenzoRicci_ai.pdf (5 pages, 508649 bytes).
 PDF statistics:
- 72 PDF objects out of 1000 (max. 8388607)
+ 75 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

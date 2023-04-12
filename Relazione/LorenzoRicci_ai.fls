@@ -219,8 +219,6 @@ INPUT .\LorenzoRicci_ai.toc
 INPUT LorenzoRicci_ai.toc
 INPUT LorenzoRicci_ai.toc
 INPUT C:\Users\ricci\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmbx10.tfm
-OUTPUT LorenzoRicci_ai.toc
-INPUT C:\Users\ricci\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmri10.tfm
 INPUT C:\Users\ricci\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\rm-lmr10.tfm
 INPUT C:\Users\ricci\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\rm-lmr7.tfm
 INPUT C:\Users\ricci\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\rm-lmr5.tfm
@@ -230,6 +228,8 @@ INPUT C:\Users\ricci\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\lmmi5.tfm
 INPUT C:\Users\ricci\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\lmsy10.tfm
 INPUT C:\Users\ricci\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\lmsy7.tfm
 INPUT C:\Users\ricci\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\lmsy5.tfm
+OUTPUT LorenzoRicci_ai.toc
+INPUT C:\Users\ricci\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmri10.tfm
 INPUT C:\Users\ricci\AppData\Local\Programs\MiKTeX\tex\latex\lm\ts1lmr.fd
 INPUT C:\Users\ricci\AppData\Local\Programs\MiKTeX\tex\latex\lm\ts1lmr.fd
 INPUT C:\Users\ricci\AppData\Local\Programs\MiKTeX\tex\latex\lm\ts1lmr.fd
@@ -242,6 +242,7 @@ INPUT .\pseudocodice_perceptron.png
 INPUT .\pseudocodice_perceptron.png
 INPUT .\pseudocodice_perceptron.png
 INPUT .\pseudocodice_perceptron.png
+INPUT C:\Users\ricci\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmbx12.tfm
 INPUT LorenzoRicci_ai.aux
 INPUT C:\Users\ricci\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-rm.enc
 INPUT C:\Users\ricci\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathex.enc

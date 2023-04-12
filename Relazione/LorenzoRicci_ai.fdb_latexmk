@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1680776251 "c:/Università/Dual-Perceptron/Relazione/LorenzoRicci_ai.tex" "LorenzoRicci_ai.pdf" "LorenzoRicci_ai" 1680776252 0
+["pdflatex"] 1681333440 "c:/Università/Dual-Perceptron/Relazione/LorenzoRicci_ai.tex" "LorenzoRicci_ai.pdf" "LorenzoRicci_ai" 1681333441 0
   "C:/Users/ricci/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1677066965 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/ricci/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1675681678 23174346 7e78a825e2e55bf516f487e3ff6e4555 ""
   "C:/Users/ricci/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc" 1256929440 2375 baa924870cfb487815765f9094cf3728 ""
@@ -65,11 +65,11 @@
   "C:/Users/ricci/AppData/Local/Programs/MiKTeX/tex/latex/placeins/placeins.sty" 1113865200 4087 636308456f60d2b31cbf97867db5708d ""
   "C:/Users/ricci/AppData/Local/Programs/MiKTeX/tex/latex/tools/array.sty" 1654690828 12694 4770336659ba563be5de2e0739d61ddc ""
   "C:/Users/ricci/AppData/Local/Programs/MiKTeX/tex/latex/tools/tabularx.sty" 1654690828 7147 be6981d9f5d866a5634048c4a11814a9 ""
-  "LorenzoRicci_ai.aux" 1680776252 334 1f20ca1b7325dfd58136fb4a52489d72 "pdflatex"
-  "LorenzoRicci_ai.tex" 1680776249 3778 02e6da2598f5c08239c6c891d01254f1 ""
-  "LorenzoRicci_ai.toc" 1680776252 131 16a6b0c835c8fcf0c2bca2bbdc1a5fa1 "pdflatex"
+  "LorenzoRicci_ai.aux" 1681333441 551 bf85079b834efb5c527dec935b4f44dc "pdflatex"
+  "LorenzoRicci_ai.tex" 1681333439 5576 1d5cbafd10e116b18a3487ab2f4639db ""
+  "LorenzoRicci_ai.toc" 1681333441 266 388b201742a242681ca3153cbac7597d "pdflatex"
   "Unifi_nuovo.svg.png" 1677250145 298782 f423b8fb8a6866df6937f31568f6d2c8 ""
-  "c:/Università/Dual-Perceptron/Relazione/LorenzoRicci_ai.tex" 1680776249 3778 02e6da2598f5c08239c6c891d01254f1 ""
+  "c:/Università/Dual-Perceptron/Relazione/LorenzoRicci_ai.tex" 1681333439 5576 1d5cbafd10e116b18a3487ab2f4639db ""
   "pseudocodice_perceptron.png" 1680771338 108467 1c915715001fdfb1895d7459a196443a ""
   (generated)
   "LorenzoRicci_ai.aux"
