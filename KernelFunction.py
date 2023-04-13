@@ -21,7 +21,7 @@ class KernelFunctions:
 
         n_samples, n_features = X.shape
         K = np.zeros((n_samples, n_samples))
-        gamma = 1000
+        gamma = 1
         for i in range(n_samples):
             for j in range(n_samples):
                 K[i,j] = np.exp(-(gamma * np.linalg.norm(X[i] - X[j])**2))

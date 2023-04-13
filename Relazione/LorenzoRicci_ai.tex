@@ -5,6 +5,8 @@
 \usepackage{tabularx}
 \usepackage{enumitem}
 \usepackage{placeins}
+\usepackage{longtable}
+\usepackage{booktabs}
 
 \author{\large{Lorenzo Ricci}}
 \title{\textbf{\fontsize{34pt}{45pt}\selectfont Dual Perceptron (dual form)}}
@@ -63,5 +65,50 @@
     \end{itemize}
 	Inoltre all'interno del metodo \textit{train()}, in base al tipo di kernel scelto dall'utente vengono mappati i dati di addestramento X e quindi creata la matrice K (nsamples,nsamples). Infine si utilizza un ciclo for per implementare il repeat dal quale si uscirà quando all'interno del ciclo for interno non ci saranno errori.
     Una volta eseguita la funzione di \textit{train()} che addestra i propri parametri alpha e b (bias), verrà chiamato il metodo \textit{predict()} che prende anche lui in ingresso X e y, i quali però non saranno uguali a quelli del \textit{train()}, ma saranno un'altra porzione di data set che viene utilizzata per testare l'accuracy dell'algoritmo nel predire i dati del target in output.
-    \subsection{}
+    \subsection{Main}
+	Lo scopo principale della classe \textit{Main} è quello di leggere uno dei quattro data set messi a disposizione. Anche questi potranno essere scelti scrivendo un numero a scelta in particolare:
+	\begin{itemize}
+		\item 1: Breast Cancer Wisconsin (Diagnostic)
+		\item 2: Adult
+		\item 3: Heart Disease
+		\item 4: Rice (Cammeo and Osmancik)
+	\end{itemize}
+	Da ogni data set vengono prese due porzioni: la prima X, che contiene tutte le colonne e le righe dei dati che servono all'algoritmo per dedurre il problema di classificazione binaria, mentre la seconda y, che contiene il vettore dei target. Il programma sfrutta: la libreria "numpy" per eseguire queste operazioni, in particolare i metodi \textit{iloc()} e \textit{where()} per, rispettivamente, prendere la porzione di dati interessa e modificare i valori interni in base a un vincolo per impostarli ad 1 o -1, e la libreria "sklearn" per i metodi \textit{train\_test\_split()} e \textit{accuracy()} per, rispettivamente, dividere X e y in un parte destinata all'addestramento e una parte invece destinata al test e al calcolo dell'accuracy della predizione finale.
+	Successivamente vengono chiamati i metodi \textit{train()} e \textit{predict()} per l'esecuzione dell'addestramento dell'algoritmo e la predizione sui dati di test. Inoltre viene calcolato anche il tempo che l'algoritmo impiega a svolgere i propri metodi, grazie ad un ulteriore libreria "timeit". Infine viene calcolata l'accuracy con il metodo \textit{accuracy\_score()}
+	\section{Analisi}
+	All'interno di questa sezione viene analizzata l'accuracy dell'algoritmo DualPerceptron nel riuscire a predire i dati di test dei vari data set, utilizzando le varie tipologie di kernel. Di seguito viene mostrata una tabella con tutti i calcoli dell'accuracy.  
+	Analizzando nel dettaglio i risultati, supponendo che la mole di dati di addestramento sia il 75\% e il 25\% di test, vediamo che:
+	\begin{itemize}
+		\item Breast Cancer Winsconsin (Diasgnostic): Questo data set contiene 30 colonne(n\_features) e 569 righe. Sia il kernel lineare che polinomiale non hanno ottimi risultati, mentre il kernel rbf riesce ad ottenere un risultato ottimo con un valore di gamma>=17.
+		\item Adult: Questo è il più grande data set con 14 colonne e 32.581 righe, il cui scopo è quello di 
+		\item Heart Disease: Questo data set contiene 13 colonne e 1026 righe, il cui scopo è 
+		\item Rice (Cammeo and Osmancik): Questo data set contiene 7 colonne e 3810 righe, il cui scopo è 
+	\end{itemize}
+	\begin{table}[]
+		\resizebox{\columnwidth}{!}{%
+		\begin{tabular}{@{}l|l|l|l|@{}}
+		\cmidrule(l){2-4}
+		 &
+		  Linear\_kernel &
+		  Polynomial\_kernel &
+		  RBF\_kernel \\ \midrule
+		\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Breast Cancer Wisconsin (Diagnostic)\\  con n\_features = 30\end{tabular}} &
+		  37,8\% &
+		  \begin{tabular}[c]{@{}l@{}}(c=1, d=2) : 43\%\\ (c=1, d=3) : 38\%\\ (c=1, d=n\_features) : 35\%\end{tabular} &
+		  \begin{tabular}[c]{@{}l@{}}Con un valore di \\ gamma \textgreater{}= 17: 100\%\end{tabular} \\ \midrule
+		\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Adult \\ \\ con n\_features = 14\end{tabular}} &
+		  \begin{tabular}[c]{@{}l@{}}100 \%\\ Time taken to train the data is 349s\\ Time taken to predict the target is 18s\end{tabular} &
+		  \begin{tabular}[c]{@{}l@{}}Risultati con (c=1, d=2): 100\%\\                                         Time taken to train the data is 414s\\                                         Time taken to predict the target is 22s\\ Risultati con (c=1, d=3): Lasciato andare per 1 ora ma non ha dato risultato\end{tabular} &
+		  Con gamma=1: \\ \midrule
+		\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Heart Disease\\ \\ con n\_features=13\end{tabular}} &
+		  50\% &
+		  \begin{tabular}[c]{@{}l@{}}Risultati con (c=1 e d=3): 51\% \\ Risultati con (c=1 e d=2): 52,5\%\end{tabular} &
+		  \begin{tabular}[c]{@{}l@{}}Riassumendo con 1/100 \textless gamma \textless 1/20 risultati buoni\\ \\ tutti intorno all'85\%\end{tabular} \\ \midrule
+		\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Rice (Cammeo and Osmancik)\\ \\ con n\_features=7\end{tabular}} &
+		  \begin{tabular}[c]{@{}l@{}}58\%\\ Time taken to train the data is 2371s\\ Time taken to predict the target is 0.26s\end{tabular} &
+		  \begin{tabular}[c]{@{}l@{}}Risultati con (c=1, d=3): 42\%\\                                         Time taken to train the data is 2933s\\                                         Time taken to predict the target is 0.578s\end{tabular} &
+		  Con gamma=1000: 100\% \\ \bottomrule
+		\end{tabular}%
+		}
+	\end{table}
 \end{document}
