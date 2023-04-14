@@ -69,7 +69,7 @@ def main():
     perceptron = MyDualPerceptron(kernel_type)
     
     start2 = timeit.default_timer()
-    perceptron.train(X_train, y_train, epochs=1000)
+    perceptron.train(X_train, y_train, epochs=1500)
     end2 = timeit.default_timer()
     print(f"Time taken to train the data is {end2 - start2}s")
     

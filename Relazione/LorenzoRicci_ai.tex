@@ -9,7 +9,7 @@
 \usepackage{booktabs}
 
 \author{\large{Lorenzo Ricci}}
-\title{\textbf{\fontsize{34pt}{45pt}\selectfont Dual Perceptron (dual form)}}
+\title{\textbf{\fontsize{34pt}{45pt}\selectfont Dual Perceptron}}
 \date{}
 \renewcommand*\contentsname{Sommario}
 
@@ -26,24 +26,24 @@
 	\end{center}
 	\tableofcontents \newpage
 	\section{Introduzione algoritmo}
-	Il primo algoritmo iterativo per l'apprendimento di classificazioni lineari è la procedura proposta da Frank Rosenblatt nel 1956 per il perceptron. E' una procedura \textit{on-line} e \textit{mistake-driven},
+	Il primo algoritmo iterativo per l'apprendimento di classificazioni lineari è la procedura proposta da Frank Rosenblatt nel 1956 per il Perceptron. E' una procedura \textit{on-line} e \textit{mistake-driven}
 	che inizia con un vettore peso iniziale \textbf{w0} (solitamente inizializzato tutto a 0, \textbf{w0=0}) e si adatta ogni volta che un punto, che sta venendo addestrato, viene malclassificato dai pesi attuali.
-	L'algoritmo aggiorna il vettore peso e il bias direttamente. Inoltre questa procedura ha garantita la convergenza dall'esistenza di un iperpiano che classifica correttamente i punti su cui lo si sta facendo addestrare, e in questo
+	L'algoritmo aggiorna il vettore peso e il bias direttamente. Inoltre, questa procedura ha garantita la convergenza dall'esistenza di un iperpiano che classifica correttamente i punti su cui lo stiamo facendo addestrare, e in questo
 	caso si dice che i dati sono \textit{linearmente separabili}. Quindi, viceversa, se non esiste un iperpiano i dati si dicono non separabili. Si definisce \textit{margine funzionale di un esempio} ({$\textbf{x}_i$},$y_i$) con rispetto all'iperpiano (\textbf{w},b), la quantità:
 	\begin{center}
 		$\gamma_i$ = $y_i$(⟨$x_i$, $x_j$⟩+$b$) 
 	\end{center}
-	e si nota che se $\gamma$ > 0 implica una corretta classificazione di ({$\textbf{x}_i$},$y_i$).
-	L'algoritmo Perceptron lavora quindi, aggiungendo esempi di addestramento positivi classificati in modo errato o sottraendo quelli negarivi classificati in modo errato ad un vettore peso scelto all'inizio in modo aribitrario.
+	e si nota che se $\gamma$ > 0, implica una corretta classificazione di ({$\textbf{x}_i$},$y_i$).
+	L'algoritmo Perceptron lavora quindi aggiungendo esempi di addestramento positivi classificati in modo errato o sottraendo quelli negarivi classificati in modo errato ad un vettore peso scelto all'inizio, in modo aribitrario.
 	Senza perdita di generalità, se si assume che il vettore peso iniziale è un vettore zero, e che l'ipotesi finale sarà quella di essere una combinazione lineare dei punti di addestramento, possiamo ridefinire il vettore peso: 
 	\begin{center}
 		$\textbf{w}$ = $\displaystyle\sum_{i=1}^l \alpha_iy_i\textbf{x}_i$
 	\end{center}
 	dove, dal momento in cui il segno del coefficiente di $\textbf{x}_i$ è dato dalla classificazione di $y_i$, gli $\alpha_i$ sono volori positivi proporzionali al numero di volte in cui una classificazione errata di $\textbf{x}_i$ ha causato l'aggiornamento del peso.
 	Punti che hanno causato pochi errori avranno un valore più piccolo di $\alpha_i$, viceversa punti più difficili avranno questo valore più grande.
-	Quindi fissato un set di addestramento S, si può pensare al vettore \textbf{$\alpha$} come rappresentazione alternativa dell'ipotesi in coordinate diverse o duali.
+	Quindi, fissato un set di addestramento S, si può pensare al vettore \textbf{$\alpha$} come rappresentazione alternativa dell'ipotesi in coordinate diverse o duali.\footnote[1]{Cristianini, N.,\& Shawe\-Taylor,J.(2000). An introductionto support vector machines and other kernel\-based learning methods. Cambridge university press.}
 	\section{Implementazione} 
-	Lo scopo del seguente progetto è quello di implementare l'algoritmo nella sua forma duale descritto in (Cristianini \& Shawe-Taylor 1999), permettendo l'uso di funzioni kernel al posto del prodotto
+	Lo scopo del seguente progetto è quello di implementare l'algoritmo nella sua forma duale, permettendo l'uso di funzioni kernel al posto del prodotto
 	scalare ⟨xi, xj⟩.
 	\begin{center}
 		\includegraphics[width=0.7\linewidth]{pseudocodice_perceptron.png}
@@ -53,8 +53,8 @@
 	La classe KernelFunctions fornisce tre metodi, uno per ogni tipologia di funzione kernel. 
 	\begin{itemize}
 		\item Linear kernel: prende in ingresso una matrice X e ritorna il prodotto scalare tra X e X trasposta.
-		\item Polynomial kernel: prende in ingresso una matrice X, un paramentro c, che viene sommato al prodotto scalare come nel kernel lineare e un ultimo paramento d che definisce il grado del polinomio. 
-		\item RBF kernel: prende in ingresso una matrice X e un parametro gamma e ritorna l'esponenziale della norma negativa moltiplicata per -gamma, il cui tutto è elevato al quadrato.
+		\item Polynomial kernel: prende in ingresso una matrice X, un paramentro \textit{c} che viene sommato al prodotto scalare come nel kernel lineare e un ultimo paramento \textit{d} che definisce il grado del polinomio. 
+		\item RBF kernel: prende in ingresso una matrice X e un parametro \textit{gamma} e ritorna l'esponenziale della norma negativa moltiplicata per -\textit{gamma}, il cui tutto è elevato al quadrato.
 	\end{itemize}
 	Per l'implementazione delle operazioni matematiche all'interno di questi metodi è stata utilizzata la libreria "numpy".
     \subsection{MyDualPerceptron}
@@ -62,10 +62,10 @@
     \begin{itemize}
     	\item X: Porzione di data set, ovvero i dati che verrano utilizzati per addestrare il vettore alpha e il bias.
     	\item y: Porzione di data set, ovvero il vettore dei target di addestramento.
-    	\item epochs: il numero di epoche(iterazioni) del ciclo for sul quale si vuole addestrare l'algoritmo.
+    	\item epochs: il numero di epoche(iterazioni) del ciclo \textit{for} sul quale si vuole addestrare l'algoritmo.
     \end{itemize}
-	Inoltre all'interno del metodo \textit{train()}, in base al tipo di kernel scelto dall'utente vengono mappati i dati di addestramento X e quindi creata la matrice K (nsamples,nsamples). Infine si utilizza un ciclo for per implementare il repeat dal quale si uscirà quando all'interno del ciclo for interno non ci saranno errori.
-    Una volta eseguita la funzione di \textit{train()} che addestra i propri parametri alpha e b (bias), verrà chiamato il metodo \textit{predict()} che prende anche lui in ingresso X e y, i quali però non saranno uguali a quelli del \textit{train()}, ma saranno un'altra porzione di data set che viene utilizzata per testare l'accuracy dell'algoritmo nel predire i dati del target in output.
+	Inoltre all'interno del metodo \textit{train()}, in base al tipo di kernel scelto dall'utente vengono mappati i dati di addestramento X e quindi creata la matrice K (nsamples,nsamples). Infine, si utilizza un ciclo \textit{for} per implementare il repeat dal quale si uscirà quando all'interno del ciclo for interno non ci saranno errori.
+    Una volta eseguita la funzione di \textit{train()} che addestra i propri parametri alpha e b (bias), verrà chiamato il metodo \textit{predict()} che prende anch'esso in ingresso X e y, i quali però non saranno uguali a quelli del \textit{train()}, ma saranno un'altra porzione di data set che viene utilizzata per testare l'accuracy dell'algoritmo nel predire i dati del target in output.
     \subsection{Main}
 	Lo scopo principale della classe \textit{Main} è quello di leggere uno dei quattro data set messi a disposizione. Anche questi potranno essere scelti scrivendo un numero a scelta, in particolare:
 	\begin{itemize}
@@ -74,16 +74,16 @@
 		\item 3: Heart Disease
 		\item 4: Rice (Cammeo and Osmancik)
 	\end{itemize}
-	Da ogni data set vengono prese due porzioni: la prima X, che contiene tutte le colonne e le righe dei dati che servono all'algoritmo per dedurre il problema di classificazione binaria, mentre la seconda y, che contiene il vettore dei target. Il programma sfrutta: la libreria "numpy" per eseguire l'operazione \textit{where()}, che modifica i valori interni in base a un vincolo per impostarli ad 1 o -1, la libreria "pandas" per leggere i data set in formato "csv" e prendere le porzioni di data set interessato grazie al metodo \textit{iloc()} e infine la libreria "sklearn" per i metodi \textit{train\_test\_split()} e \textit{accuracy\_score()} per, rispettivamente, dividere X e y in un parte destinata all'addestramento e una parte invece destinata al test e al calcolo dell'accuracy della predizione finale.
-	Successivamente vengono chiamati i metodi \textit{train()} e \textit{predict()} per l'esecuzione dell'addestramento dell'algoritmo e la predizione sui dati di test. Inoltre viene calcolato anche il tempo che l'algoritmo impiega a svolgere i propri metodi, grazie ad un ulteriore libreria "timeit".
+	Da ogni data set vengono prese due porzioni: la prima X, che contiene tutte le colonne e le righe dei dati che servono all'algoritmo per dedurre il problema di classificazione binaria, mentre la seconda y che contiene il vettore dei target. Il programma sfrutta: la libreria "numpy" per eseguire l'operazione \textit{where()}, che modifica i valori interni in base a un vincolo per impostarli ad 1 o -1, la libreria "pandas" per leggere i data set in formato "csv" e prendere le porzioni di data set interessato grazie al metodo \textit{iloc()} e infine la libreria "sklearn" per i metodi \textit{train\_test\_split()} e \textit{accuracy\_score()} per, rispettivamente, dividere X e y in un parte destinata all'addestramento e una parte invece destinata al test e al calcolo dell'accuracy della predizione finale.
+	Successivamente vengono chiamati i metodi \textit{train()} e \textit{predict()} per l'esecuzione dell'addestramento dell'algoritmo e la predizione sui dati di test. Inoltre, viene calcolato anche il tempo che l'algoritmo impiega a svolgere i propri metodi, grazie ad un ulteriore libreria "timeit".
 	\section{Analisi}
 	All'interno di questa sezione viene analizzata l'accuracy dell'algoritmo DualPerceptron nel riuscire a predire i dati di test dei vari data set, utilizzando le varie tipologie di kernel. Di seguito viene mostrata una tabella con tutti i calcoli dell'accuracy.  
-	Analizzando nel dettaglio i risultati, supponendo che la mole di dati di addestramento sia il 75\% e il 25\% di test, vediamo che:
+	Analizzando nel dettaglio i risultati e supponendo che la mole di dati di addestramento sia il 75\% e il 25\% di test e che l'algoritmo è stato addestrato su 1000 epoche, vediamo che:
 	\begin{itemize}
-		\item Breast Cancer Winsconsin (Diasgnostic): Questo data set contiene 30 colonne(n\_features) e 569 righe, il cui scopo è quello di utilizzare le 30 caratteristiche delle cellule presenti nei campioni per classificarli in due categorie: benigni o maligni. Sia il kernel lineare che polinomiale non hanno ottimi risultati, mentre il kernel rbf riesce ad ottenere un risultato ottimo con un valore di gamma>=17.
-		\item Adult: Questo è il più grande data set con 14 colonne e 32.581 righe, il cui scopo è quello di predire, in base a dati di tipo demografico di persone adulte, se un individuo guadagna più o meno di 50.000 euro.
-		\item Heart Disease: Questo data set contiene 13 colonne e 1026 righe, il cui scopo è quello di classificare i pazienti in base alla presenza o assenza di malattie cardiache.
-		\item Rice (Cammeo and Osmancik): Questo data set contiene 7 colonne e 3810 righe, il cui scopo è prevedere la composizione chimica del riso in base alle sue caratteristiche geografiche e varietali, in particolare se è "Cammeo" o "Osmancik".
+		\item Breast Cancer Winsconsin (Diasgnostic): Questo data set contiene 30 colonne(n\_features) e 569 righe(n\_samples) e ha lo scopo di utilizzare le 30 caratteristiche delle cellule presenti nei campioni per classificarli in due categorie: benigni o maligni. Sia il kernel lineare che polinomiale non hanno ottimi risultati, mentre il kernel rbf riesce ad ottenere un risultato ottimo con un valore di gamma>=17. Con valori di gamma più piccoli il vettore predetto \textit{y\_pred} ritornava in alcuni punti il valore 0.
+		\item Adult: Questo è il più grande data set con 14 colonne e 32.581 righe, e ha lo scopo di predire, in base a dati di tipo demografico di persone adulte, se un individuo guadagna più o meno di 50.000 euro. In questo caso tutte le tipologie di kernel hanno fornito un perfetta accuracy. Da notare però, l'elevato tempo di addestramento e predizione dei dati.
+		\item Heart Disease: Questo data set contiene 13 colonne e 1026 righe e ha lo scopo di classificare i pazienti in base alla presenza o assenza di malattie cardiache. Sia il kernel lineare che polinomiale non hanno dato buoni risultati, anche con valori di \textit{d} alti l'accuracy non cambia. L'rbf kernel invece non ha fornito un risultato ottimo ma, con valori di gamma compresi tra 1/100 e 1/20, ma accettabile.
+		\item Rice (Cammeo and Osmancik): L'ultimo data set contiene 7 colonne e 3810 righe e ha lo scopo di prevedere la composizione chimica del riso in base alle sue caratteristiche geografiche e varietali, in particolare se è "Cammeo" o "Osmancik". Notiamo in questo data set, come in Adult, una grande necessità di tempo nell'addestrare i dati. Migliori prestazioni da parte del kernel lineare rispetto a quello polinomiale ma comunque poco accettabili. Invece con valori di gamma molto alti l'rbf riesce a predire con una perfetta accuracy.
 	\end{itemize}
 	\begin{table}[]
 		\resizebox{\columnwidth}{!}{%
@@ -112,5 +112,7 @@
 		\end{tabular}%
 		}
 	\end{table}
-	TODO: Da scrivere le conclusioni sui dati e l'itemize sopra... 
+    Dai risultati sperimentali si nota subito una migliore capacità generale da parte del kernel rbf di separare i dati, rispetto a quello lineare e polinomiale. I risultati non ottimali degli altri due potrebbero dipendere da un scarsa capacità di quest'ultimi nel separare dati di maggiore difficoltà, risultati migliori potrebbero essere ottenuti aumentando il numero di epoche con cui viene addestrato l'algoritmo. 
+	Questa conclusione nasce dall'analisi del vettore alpha nel momento in cui ha finito il suo addestramento e che possiede al suo interno molti valori pari a 1000. Questo risultato significa che le epoche non sono state sufficienti alla classificazione di quei punti, di conseguenza un aumento di epoche sarà necessario per migliori prestazioni future, ovviamente a discapito del tempo di esecuzione.
+	Quest'ultimo è elevato per i metodi \textit{train()} e \textit{predict()} per i data set Adult e Rice può dipendere da due fattori: il primo è il maggiore numero di esempi(righe), in particolare Adult, e il secondo invece una maggiore difficoltà dei dati stessi.
 \end{document}

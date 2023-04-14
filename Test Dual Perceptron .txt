@@ -80,8 +80,7 @@ Polynomial_Kernel = 56% (c=1, d=3) , 56% (c=100, d=3), 42% (c=1000, d=3), 54% (c
 
 Linear_kernel = Accuracy : 50%, 51%, 48% 
 
-Polynomial_Kernel = Risultati con (c=1 e d=3): 53%, 49%, 51% 
-                    Risultati con (c=3 e d=3): 52,5%, 53%, 48%
+Polynomial_Kernel = Risultati con (c=1 e d=3): 53%, 49%, 51% ---------> aumentando il numero di epoche a 1500 : 
 
 con n_features = 13
 
