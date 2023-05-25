@@ -100,9 +100,13 @@ Riassumendo con 1/100 < gamma < 1/10 risultati buoni
 
 con n_features = 7
 
-1) Linear_kernel = Time taken to train the data is 2371.483619700004s
-                   Time taken to predict the target is 0.2640354999966803s
-                   Accuracy: 58% ma sono tutti 1 
+1) Linear_kernel = Il vettore dei pesi in forma duale è: [1.000e+00 0.000e+00 1.000e+00 ... 1.499e+03 0.000e+00 0.000e+00]
+                   Il bias è: 0.0
+                   Time taken to train the data is 2724.1426753000123s
+                   Time taken to predict the target is 0.34103609999874607s
+                   Da prevedere: [-1  1  1 ...  1  1  1]
+                   Predetto: [-1.  1. -1. ... -1.  1.  1.]
+                   Accuracy: 0.9046369203849519
 
 2) Polynomial_kernel = Risultati con (c=1, d=3): Time taken to train the data is 2933.835633499999s
                                                  Time taken to predict the target is 0.5786790999991354s
