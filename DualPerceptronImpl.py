@@ -3,53 +3,40 @@ from KernelFunction import KernelFunctions
 
 class MyDualPerceptron:
 
-    def __init__(self, kernel_type):
-        self.alpha = None #Vettore dei pesi nella forma duale 
+    def __init__(self):
+        self.a = None #Vettore dei pesi nella forma duale 
         self.b = None #Bias
         self.R = None #Massima distanza euclidea nel mio set di Dati 
         self.kernel = KernelFunctions() 
-        self.kernel_type = kernel_type
 
-    def train(self, X, y, epochs=1000):
+    def train(self, X, y, kernel, epochs=1000):
  
-        n_samples, n_features = X.shape
-        self.alpha = np.zeros(n_samples)
+        n_samples = X.shape[0]
+        self.a = np.zeros(n_samples)
         self.b = 0
-        self.R = np.linalg.norm(X, ord=np.inf)
+        self.R = np.max(np.linalg.norm(X, axis=1))
         K_train = np.zeros((n_samples,n_samples))
         
-        #Inserisco all'interno della matrice kernelizzata per il train i valori a seconda del tipo di kernel scelto
-        if self.kernel_type == '1':
-            K_train = self.kernel.linear_kernel(X)
-        elif self.kernel_type == '2':
-            K_train = self.kernel.polynomial_kernel(X)
-        elif self.kernel_type == '3':
-            K_train = self.kernel.rbf_kernel(X)
-        else:
-            print('Hai inserito un input non corretto !!!')
-            return
+        for _ in range(epochs):
+            no_mistakes = True
 
-        for epoch in range(epochs):
-            errors = 0
             for i in range(n_samples):
-                sum = 0
-                for j in range(n_samples):
-                    sum += self.alpha[j] * y[j] * K_train[i,j]
-                y_hat = sum + self.b
-                if y[i] * y_hat <= 0:
-                    self.alpha[i] += 1
-                    self.b += y[i] * self.R ** 2
-                    errors += 1
-            if errors == 0:
-                break
-        
-        print('Il vettore dei pesi in forma duale è: ' + str(self.alpha))
-        print('Il bias è: ' + str(self.b))
+                prediction = sum(self.a[j] * y[j] * kernel(X[j],X[i]) for j in range(n_samples)) + self.b
+                if y[i] * prediction <= 0:
+                    self.a[i] += 1
+                    self.b += y[i] * self.R**2
+                    no_mistakes = False
 
+            if no_mistakes:
+                break
+            
+        return self.a, self.b
+    
+    """
     def predict(self, X, y):
 
         #Inizializzo 
-        n_samples, n_features = X.shape
+        n_samples = X.shape[0]
         y_pred = np.zeros(n_samples)
         K_test = np.zeros((n_samples,n_samples))
 
@@ -68,7 +55,15 @@ class MyDualPerceptron:
         for i in range(n_samples):
             sum = 0
             for j in range(n_samples):
-                sum += self.alpha[j] * y[j] * K_test[i,j]
+                sum += self.a[j] * y[j] * K_test[i,j]
             y_pred[i] = np.sign(sum + self.b)
 
         return y_pred
+    """
+
+    def predict(self, X_test, X_train, y_train, a, b, kernel):
+        y_pred = []
+        for x_test in X_test:
+            prediction = sum(a[j] * y_train[j] * kernel(X_train[j], x_test) for j in range(len(X_train))) + b
+            y_pred.append(np.sign(prediction))
+        return np.array(y_pred)
