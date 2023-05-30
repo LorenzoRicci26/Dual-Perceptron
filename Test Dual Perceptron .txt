@@ -1,329 +1,114 @@
-Test Dual Perceptron : 
-
-1) Bank: 
-1)Linear_kernel: Data_Train (2759, 20), Data_Test(1360, 20) Time taken to map the data with the Kernel method choosen is 0.09170279999989361s
-Time taken to train the data is 2246.1146452000003s
-Time taken to predict the target is 0.550897999999961s
-Accuracy: 0.8838235294117647
-Time taken to run the the entire program is 2250.7912963s
-
-2)Polynomial_kernel: 
-
-2) Adult: 
-1)Linear_Kernel: Data_Train (3350,14), Data_Test(1650,14) Time taken to map the data with the Kernel method choosen is 0.10594949999995151s
-Time taken to train the data is 6.626337100000455s
-Time taken to predict the target is 0.7866966999999931s
-Da prevedere: [1 1 1 ... 1 1 1]
-Predetto: [1. 1. 1. ... 1. 1. 1.]
-Accuracy: 1.0
-Time taken to run the the entire program is 15.869211199999882s
-          
-2)Polynomial_Kernel: Time taken to map the data with the Kernel method choosen is 0.18180579999989277s
-Time taken to train the data is 7.1606088999997155s
-Time taken to predict the target is 0.8775040999998964s
-Da prevedere: [1 1 1 ... 1 1 1]
-Predetto: [1. 1. 1. ... 1. 1. 1.]
-Accuracy: 1.0
-
-3)RBF_Kernel: Time taken to map the data with the Kernel method choosen is 39.595336499999576s
-Time taken to train the data is 5.800569200000609s
-Time taken to predict the target is 0.711608100000376s
-Da prevedere: [1 1 1 ... 1 1 1]
-Predetto: [1. 1. 1. ... 1. 1. 1.]
-Accuracy: 1.0
-Time taken to run the the entire program is 49.5626014999998s
-
-
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 Tutti i test fatti su un addestramento di 1000 epoche 
 
 1)Breast Cancer Wisconsin (Diagnostic)
 
-n_features = 30
+n_samples= 569 | n_features = 30
 
-Linear_Kernel = Il vettore dei pesi in forma duale è: [1.000e+00 1.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
- 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 7.310e+02
- 1.000e+00 7.320e+02 0.000e+00 0.000e+00 0.000e+00 0.000e+00 8.000e+00
- 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
- 0.000e+00 0.000e+00 0.000e+00 8.000e+00 0.000e+00 0.000e+00 0.000e+00
- 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
- 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 1.000e+00 0.000e+00
- 1.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 1.120e+02 1.000e+00
- 0.000e+00 1.140e+02 0.000e+00 0.000e+00 1.000e+00 0.000e+00 0.000e+00
- 0.000e+00 2.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 2.170e+02
- 0.000e+00 2.170e+02 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
- 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
- 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
- 0.000e+00 0.000e+00 0.000e+00 1.000e+00 0.000e+00 1.000e+00 0.000e+00
- 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
- 0.000e+00 0.000e+00 5.310e+02 0.000e+00 5.310e+02 0.000e+00 4.210e+02
- 2.600e+01 0.000e+00 1.500e+01 1.600e+01 1.000e+00 0.000e+00 0.000e+00
- 2.870e+02 0.000e+00 0.000e+00 1.371e+03 0.000e+00 0.000e+00 0.000e+00
- 3.400e+01 0.000e+00 0.000e+00 0.000e+00 0.000e+00 2.300e+01 9.500e+01
- 0.000e+00 9.900e+01 0.000e+00 1.500e+03 4.000e+01 0.000e+00 0.000e+00
- 1.300e+01 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
- 0.000e+00 2.270e+02 0.000e+00 0.000e+00 0.000e+00 0.000e+00 5.400e+01
- 4.500e+01 0.000e+00 6.300e+01 0.000e+00 1.400e+01 0.000e+00 0.000e+00
- 0.000e+00 0.000e+00 0.000e+00 2.000e+00 0.000e+00 0.000e+00 6.320e+02
- 0.000e+00 0.000e+00 5.800e+01 0.000e+00 0.000e+00 0.000e+00 1.890e+02
- 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
- 3.830e+02 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
- 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
- 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
- 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
- 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
- 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 4.000e+01 0.000e+00
- 4.000e+01 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
- 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
- 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
- 0.000e+00 0.000e+00 0.000e+00 9.400e+01 0.000e+00 7.600e+01 0.000e+00
- 0.000e+00 0.000e+00 0.000e+00 1.500e+03 2.020e+02 0.000e+00 0.000e+00
- 1.280e+03 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
- 0.000e+00 0.000e+00 0.000e+00 0.000e+00 7.500e+01 1.080e+02 0.000e+00
- 3.300e+01 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
- 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
- 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
- 0.000e+00 6.290e+02 0.000e+00 1.850e+02 0.000e+00 0.000e+00 5.700e+01
- 0.000e+00 0.000e+00 4.140e+02 0.000e+00 0.000e+00 0.000e+00 0.000e+00
- 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 9.300e+01 0.000e+00
- 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
- 0.000e+00 0.000e+00 6.400e+01 0.000e+00 1.930e+02 0.000e+00 0.000e+00
- 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
- 0.000e+00 3.530e+02 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
- 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
- 0.000e+00 0.000e+00 0.000e+00 0.000e+00 9.800e+01 0.000e+00 0.000e+00
- 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
- 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
- 0.000e+00 0.000e+00 6.600e+01 0.000e+00 6.600e+01 0.000e+00 0.000e+00
- 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00
- 1.000e+01 0.000e+00 0.000e+00 1.000e+01 0.000e+00 0.000e+00 0.000e+00
- 0.000e+00 0.000e+00 0.000e+00 0.000e+00 0.000e+00]
-Il bias è: 0.0
-Time taken to train the data is 67.69374060002156s
-Time taken to predict the target is 0.008746899955440313s
-Da prevedere: [-1 -1  1  1 -1 -1  1 -1 -1  1  1  1  1 -1  1  1  1  1  1 -1  1 -1  1 -1
-  1 -1  1 -1 -1 -1  1  1 -1  1  1  1  1 -1  1 -1 -1 -1  1  1  1 -1 -1  1
- -1  1  1  1  1 -1 -1  1  1 -1  1  1  1 -1  1  1  1  1  1 -1 -1  1  1  1
- -1  1  1  1 -1 -1 -1  1 -1  1  1  1 -1  1  1  1 -1 -1 -1  1 -1 -1  1  1
-  1 -1  1 -1  1  1 -1 -1  1  1 -1 -1  1  1 -1  1 -1  1  1  1  1  1  1  1
-  1  1 -1  1 -1  1  1  1  1  1 -1 -1  1 -1  1  1 -1 -1  1 -1 -1  1 -1  1
-  1 -1  1 -1  1  1  1  1 -1 -1 -1  1  1 -1 -1  1 -1  1  1  1 -1  1 -1 -1
-  1  1  1]
-Predetto: [-1. -1.  1.  1. -1. -1. -1. -1. -1.  1.  1.  1.  1. -1.  1.  1.  1.  1.
-  1. -1.  1. -1.  1. -1.  1. -1.  1. -1. -1. -1.  1.  1. -1.  1.  1.  1.
-  1. -1.  1. -1. -1. -1.  1.  1.  1. -1. -1.  1. -1.  1.  1.  1.  1. -1.
-  1.  1.  1. -1.  1.  1.  1. -1.  1.  1.  1.  1.  1. -1. -1.  1.  1.  1.
- -1.  1.  1.  1.  1. -1. -1.  1. -1.  1.  1.  1. -1.  1.  1.  1. -1.  1.
- -1.  1. -1. -1.  1.  1.  1. -1.  1. -1.  1.  1. -1. -1.  1.  1. -1. -1.
-  1.  1. -1.  1. -1.  1.  1.  1.  1.  1.  1.  1.  1.  1. -1.  1. -1. -1.
-  1.  1.  1.  1. -1. -1. -1. -1.  1.  1.  1. -1.  1. -1. -1.  1. -1.  1.
-  1. -1.  1. -1.  1.  1.  1.  1. -1. -1. -1.  1.  1.  1. -1.  1. -1.  1.
-  1.  1. -1.  1. -1. -1.  1.  1.  1.]
-Accuracy: 0.9532163742690059
+1.1) Linear: Time taken to train the data is 211.1031446000561s
+             Time taken to predict the target is 0.048991099931299686s
+             Accuracy sul set di test: 0.9649122807017544
 
-Polynomial_Kernel = 
+2.1)Polinomial: (degree=2): Time taken to train the data is 317.7160481000319s
+                            Time taken to predict the target is 0.0651627000188455s
+                            Accuracy sul set di test: 0.9473684210526315
+                (degree=3): Time taken to train the data is 7.738842600025237s
+                            Time taken to predict the target is 0.06485279998742044s
+                            Accuracy sul set di test: 0.956140350877193
+                (degree=4): Time taken to train the data is 13.973362900083885s
+                            Time taken to predict the target is 0.06720710010267794s
+                            Accuracy sul set di test: 0.9385964912280702
+                (degree=5): Time taken to train the data is 43.87366689997725s
+                            Time taken to predict the target is 0.0663301000604406s
+                            Accuracy sul set di test: 0.9210526315789473
 
-con d = 3 : 
-[ 1.  1.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.
-  3.  1.  1.  0.  1.  0.  0.  1.  1.  0.  0.  1.  0.  0.  0.  0.  0.  0.
-  0.  0.  0.  0.  1.  0.  0.  0.  0.  0.  3.  1.  0.  0.  0.  0.  0.  0.
-  0.  0.  0.  1.  0.  0.  0.  0.  1.  9.  0.  0.  0.  0.  0.  1.  0.  0.
-  0.  0.  0.  0.  0.  1.  0.  0.  0.  0.  0.  0.  0.  2.  0.  0.  0.  0.
-  0.  0.  0.  0.  0.  0.  0.  1.  0.  0.  1.  0.  0.  0.  0.  0.  0.  0.
-  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  1.  0.  0.  0.
-  3.  0.  0.  0.  0.  0.  0. 13.  0.  0.  0.  0.  0.  0.  0.  0.  1.  0.
-  1.  1.  0.  1.  0.  0.  0.  0.  0.  0.  0.  0.  0.  1.  0.  0.  0.  0.
-  1.  0.  0.  0.  0.  0.  3.  0.  1.  0.  0.  0.  0.  0.  0.  0.  0.  1.
-  0.  0.  0.  0.  6.  2.  0.  0.  0.  0.  0.  0.  2.  0.  1.  1.  0.  0.
-  0.  1.  0.  0.  0.  0.  5.  0.  0.  0.  0.  1.  0.  0.  0.  0.  0.  0.
-  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  1.  0.  0.  0.
-  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  7.  0.  0.  0.  0.  0.
-  0.  0.  0.  0.  0.  0.  0.  0.  0.  1.  0.  0.  0.  0.  0.  1.  0.  0.
-  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.
-  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.
-  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.
-  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.
-  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.
-  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  3.  0.  0.
-  0.  0.  0.  0.  0.  0.  1.  0.  1.  0.  0.  0.  0.  3.  2.  0.  0.  0.
-  0.]
-Il bias è: 0.0
-Time taken to train the data is 0.5627050999901257s
-Time taken to predict the target is 0.008677000005263835s
-Da prevedere: [ 1 -1  1  1 -1  1  1 -1 -1 -1 -1  1  1  1  1  1 -1 -1  1 -1  1  1  1  1
-  1 -1  1 -1 -1 -1 -1  1 -1  1  1  1 -1 -1  1  1 -1  1 -1  1 -1 -1  1  1
- -1 -1  1  1 -1  1 -1 -1  1  1  1  1  1  1  1  1 -1 -1  1  1  1  1  1  1
-  1  1  1 -1  1  1 -1  1  1 -1  1  1  1  1  1  1 -1  1  1 -1  1  1 -1  1
-  1 -1  1 -1 -1  1  1  1 -1  1 -1  1 -1  1 -1 -1 -1  1 -1  1 -1  1 -1  1
- -1 -1 -1 -1 -1  1  1  1  1  1  1 -1  1  1 -1  1  1 -1  1  1  1  1  1  1
-  1  1 -1  1  1  1  1  1  1  1  1  1  1 -1  1 -1 -1 -1  1 -1  1  1 -1  1
- -1 -1  1]
-Predetto: [ 1. -1.  1.  1. -1.  1.  1. -1. -1. -1. -1.  1. -1.  1.  1.  1. -1. -1.
-  1. -1. -1.  1.  1.  1.  1. -1.  1. -1. -1. -1. -1.  1. -1.  1.  1.  1.
- -1. -1.  1.  1. -1.  1. -1.  1. -1. -1.  1.  1. -1. -1.  1.  1.  1.  1.
- -1. -1.  1.  1.  1.  1.  1.  1.  1.  1. -1.  1.  1.  1.  1.  1.  1.  1.
-  1.  1.  1. -1.  1.  1. -1.  1.  1.  1.  1.  1. -1.  1.  1.  1. -1.  1.
-  1. -1.  1.  1. -1.  1.  1. -1.  1. -1. -1.  1.  1. -1.  1.  1. -1.  1.
- -1.  1. -1. -1. -1.  1. -1.  1. -1.  1.  1.  1. -1. -1. -1. -1. -1.  1.
-  1.  1.  1.  1.  1. -1.  1.  1. -1.  1.  1. -1.  1.  1.  1.  1.  1. -1.
-  1.  1. -1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1. -1.  1.  1. -1.  1.
-  1. -1.  1.  1.  1.  1. -1.  1.  1.]
-Accuracy: 0.9181286549707602
+2.3)Radial Basis Function (RBF):(gamma=1):  Time taken to train the data is 2.5056451000273228s
+                                            Time taken to predict the target is 0.15058159991167486s
+                                            Accuracy sul set di test: 0.9385964912280702
+                                (gamma=2):  Time taken to train the data is 2.4862157000461593s
+                                            Time taken to predict the target is 0.14933080004993826s
+                                            Accuracy sul set di test: 0.9298245614035088
+                                (gamma=3):  Time taken to train the data is 2.4455308000324294s
+                                            Time taken to predict the target is 0.15411410003434867s
+                                            Accuracy sul set di test: 0.9385964912280702
+                                (gamma=0.1):Time taken to train the data is 4.356686300016008s
+                                            Time taken to predict the target is 0.14728079992346466s
+                                            Accuracy sul set di test: 0.9473684210526315
+                                (gamma=0.5):Time taken to train the data is 2.5589759000577033s
+                                            Time taken to predict the target is 0.15575069992337376s
+                                            Accuracy sul set di test: 0.9649122807017544
+                                (gamma=0.3):Time taken to train the data is 2.4690503999590874s
+                                            Time taken to predict the target is 0.14887229993473738s
+                                            Accuracy sul set di test: 0.9649122807017544
 
-Con d = 2 invece: Il vettore dei pesi in forma duale è:
- [19.  1.  0.  0.  0.  0. 31.  0.  9.  1.  0.  1.  4.  0. 22.  1. 18.  0.
-  1.  0.  2.  1.  1.  0.  0.  0.  0.  1.  2.  0.  1.  0.  1.  0.  2.  2.
-  0.  1.  0.  1.  1.  1.  0.  0.  0.  0.  0.  1.  1.  1.  2.  2.  4.  1.
-  2.  1.  0.  0.  2.  1.  2.  0.  0.  8.  0.  1.  3.  5.  0.  1.  0.  7.
-  1.  1.  3.  1.  0.  0.  0.  0. 14.  0.  0.  0.  0.  0.  3.  0.  0.  1.
-  1.  0.  0. 27.  0. 21.  0.  1.  1.  1. 14.  0.  0.  1.  0.  0.  1.  0.
-  0. 17.  0.  0.  0.  0.  0.  0. 18.  0.  1.  1.  1.  1.  2.  2.  0.  1.
-  1.  8.  0.  1.  0.  1.  0. 24. 33.  0.  2.  1.  1.  0.  1.  0.  1.  1.
-  1.  1.  2.  3.  1.  0.  4.  0.  0.  0.  1.  1.  0.  0.  0.  0.  0.  1.
-  1.  0.  1.  1.  0.  0.  0.  1.  0.  1.  0.  0.  1.  1.  0.  0.  1.  0.
-  0.  0.  0.  1.  0.  7.  0.  7.  0. 19.  0.  1. 18.  1.  0.  0.  0.  1.
-  2.  2.  2.  0.  2.  0.  1.  1.  0.  2.  0.  0.  1.  0.  0.  0.  0.  1.
-  1.  1.  1.  0.  0.  1. 14. 14.  0.  0.  2.  1.  0.  0.  0.  1.  0.  0.
-  0.  1.  0.  1.  0.  0.  0.  1. 15. 15.  0.  1.  0.  0.  0.  1.  0.  0.
-  0.  1.  0.  0.  3.  0. 28.  1.  1.  1. 32.  7.  0.  0.  0.  0.  2.  0.
-  3.  1.  0.  1.  1.  0.  0.  7.  0.  0.  1.  0.  0.  0.  0.  0.  1.  1.
-  5.  0.  0.  0.  0.  0.  7.  7.  0.  1.  2.  0.  0.  1.  0. 18.  1.  1.
-  0.  0.  1.  0.  0.  0.  0.  3.  0.  0.  0.  0.  0.  0.  0.  0.  2.  2.
-  0.  0.  0.  0.  0.  2.  0.  0.  0.  0.  0.  0. 58.  0.  0.  0. 61.  1.
-  0.  0.  0.  1.  1.  0.  1.  0.  1.  0.  0.  5.  1.  0.  1.  5.  0.  1.
-  9.  2.  4.  6.  0.  0.  0.  0.  0.  0.  0.  1.  0.  0.  0.  1.  0. 11.
-  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  2.  0.
-  0.]
-Il bias è: 0.0
-Time taken to train the data is 2.821076099993661s
-Time taken to predict the target is 0.009384799981489778s
-Da prevedere: [ 1 -1  1 -1  1  1  1  1 -1 -1 -1 -1 -1 -1  1  1  1  1 -1 -1  1 -1 -1  1
- -1 -1  1 -1  1 -1 -1  1  1 -1 -1  1  1  1  1  1  1  1  1  1 -1 -1 -1 -1
- -1  1  1 -1  1  1  1 -1  1  1  1  1  1 -1 -1 -1  1 -1  1 -1  1  1  1 -1
-  1  1  1  1 -1  1 -1  1  1  1 -1  1  1  1  1 -1 -1  1  1  1  1  1  1  1
-  1 -1 -1 -1  1  1  1  1  1  1 -1 -1  1  1  1  1  1  1  1 -1  1 -1 -1 -1
-  1 -1  1 -1 -1  1  1 -1 -1  1 -1  1  1  1  1 -1 -1  1  1 -1  1  1  1  1
-  1 -1  1  1  1  1  1  1 -1 -1  1 -1 -1  1 -1  1  1 -1  1  1  1 -1  1  1
-  1 -1 -1]
-Predetto: [ 1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.
-  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.
-  1.  1.  1.  1.  1.  1.  1.  1. -1.  1.  1.  1.  1.  1.  1.  1.  1.  1.
-  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1. -1.  1.  1.  1.  1.
-  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.
-  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1. -1.  1.
-  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.
-  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.
-  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.
-  1.  1.  1.  1.  1.  1.  1.  1.  1.]
-Accuracy: 0.6374269005847953
-
-RBF_kernel = 
-Il vettore dei pesi in forma duale è: [1. 1. 0. 1. 0. 1. 2. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 1. 1. 0. 0. 1. 1. 0.
- 0. 1. 1. 0. 0. 1. 1. 1. 1. 0. 0. 0. 0. 0. 0. 0. 0. 0. 1. 1. 1. 0. 0. 1.
- 1. 1. 0. 0. 1. 1. 0. 0. 1. 0. 0. 0. 1. 2. 1. 1. 0. 0. 0. 0. 0. 0. 0. 0.
- 0. 0. 1. 1. 0. 1. 1. 0. 0. 0. 0. 0. 0. 1. 1. 0. 0. 1. 2. 1. 0. 0. 0. 0.
- 1. 0. 1. 0. 0. 1. 1. 0. 0. 0. 2. 0. 0. 0. 1. 1. 0. 0. 1. 1. 0. 0. 0. 1.
- 0. 0. 0. 0. 1. 0. 0. 0. 0. 0. 0. 0. 0. 1. 0. 0. 1. 0. 2. 0. 0. 0. 0. 0.
- 1. 0. 1. 0. 0. 0. 0. 1. 0. 1. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.
- 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 1. 1. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.
- 0. 0. 0. 0. 0. 1. 1. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.
- 0. 0. 0. 0. 0. 0. 1. 1. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.
- 0. 0. 0. 0. 0. 0. 0. 1. 1. 0. 0. 1. 1. 0. 0. 0. 0. 0. 1. 1. 1. 1. 0. 0.
- 0. 0. 0. 0. 1. 0. 1. 0. 0. 0. 0. 1. 1. 0. 0. 0. 0. 1. 1. 1. 1. 0. 0. 0.
- 0. 0. 0. 0. 0. 1. 1. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.
- 0. 0. 1. 0. 0. 1. 0. 1. 1. 0. 0. 0. 0. 0. 1. 1. 0. 0. 0. 0. 0. 0. 0. 0.
- 1. 2. 1. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 1. 0.
- 1. 0. 0. 1. 1. 1. 1. 0. 0. 0. 1. 1. 0. 0. 0. 1. 0. 0. 0. 1. 0. 0. 0. 0.
- 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
-Il bias è: 0.0
-Time taken to train the data is 0.5630230000242591s
-Time taken to predict the target is 0.08357120002619922s
-Da prevedere: [-1 -1  1  1  1 -1 -1 -1  1  1 -1  1 -1  1 -1 -1  1  1 -1 -1 -1  1 -1 -1
- -1  1  1  1  1  1  1  1  1 -1 -1 -1  1  1  1  1  1 -1 -1 -1  1 -1  1  1
- -1 -1 -1  1 -1 -1  1 -1  1  1  1 -1  1  1  1  1  1  1  1  1  1  1  1  1
-  1  1  1  1 -1  1  1  1 -1 -1 -1  1  1  1  1  1  1 -1  1  1 -1 -1 -1  1
-  1  1  1  1  1  1  1  1 -1  1 -1 -1  1 -1  1  1 -1  1 -1  1 -1 -1  1  1
-  1  1  1  1  1  1  1  1  1  1  1  1 -1  1  1  1 -1  1 -1 -1  1 -1 -1  1
- -1 -1  1  1 -1  1  1 -1 -1  1 -1 -1 -1 -1 -1 -1  1  1 -1  1  1  1 -1  1
- -1  1  1]
-Predetto: [-1. -1.  1.  1.  1. -1. -1. -1.  1.  1. -1.  1. -1.  1. -1.  1.  1.  1.
- -1. -1. -1.  1. -1.  1. -1.  1.  1.  1. -1.  1.  1.  1.  1. -1. -1. -1.
-  1.  1.  1.  1.  1. -1. -1. -1.  1. -1.  1.  1. -1. -1. -1.  1. -1. -1.
-  1. -1.  1.  1.  1. -1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.  1.
-  1.  1.  1.  1. -1.  1.  1.  1.  1. -1. -1.  1.  1.  1.  1.  1.  1. -1.
-  1.  1. -1. -1. -1.  1.  1.  1.  1. -1.  1.  1.  1.  1. -1.  1. -1.  1.
- -1. -1.  1.  1. -1. -1. -1.  1.  1. -1.  1.  1.  1.  1.  1.  1.  1.  1.
-  1.  1.  1.  1.  1.  1. -1.  1.  1.  1. -1.  1. -1. -1.  1. -1.  1.  1.
- -1. -1.  1.  1. -1.  1.  1. -1. -1.  1.  1. -1. -1. -1. -1. -1.  1.  1.
- -1.  1.  1.  1. -1.  1. -1.  1.  1.]
-Accuracy: 0.935672514619883
-     
 2)Adult 
 
-n_features = 14
+n_samples= 1000 | n_features = 7 identificate come le più rilevanti all'interno del dataset
 
-Linear_Kernel = 100% Il vettore dei pesi in forma duale è: [1. 0. 0. ... 0. 0. 0.]
-                     Il bias è: 478165689.0
-                     Time taken to train the data is 349.7842515999946s
-                     Time taken to predict the target is 18.699715499999s
+Linear-Kernel:Time taken to train the data is 537.7129719000077s
+              Time taken to predict the target is 0.21054480003658682s
+              Accuracy sul set di test: 0.74
 
-Polynomial_Kernel = Risultati con (c=1, d=2): Time taken to train the data is 414.05723290001333s
-                                              Time taken to predict the target is 22.549602300001425s
-                                              Accuracy: 1.0
-                    Risultati con (c=1, d=3): Ci mette un tempo infinito stoppato 
+Polynomial_Kernel = Risultati con (c=1, d=2): Time taken to train the data is 604.7094605000457s
+                                              Time taken to predict the target is 0.2401421999093145s
+                                              Accuracy sul set di test: 0.7366666666666667
+                              con (c=1, d=3): Time taken to train the data is 623.953101699939s
+                                              Time taken to predict the target is 0.24338980007451028s
+                                              Accuracy sul set di test: 0.7533333333333333
 
-RBF_kernel =  
+RBF_kernel = (gamma = 2): Time taken to train the data is 1615.423785699997s
+                          Time taken to predict the target is 0.6563004999188706s
+                          Accuracy sul set di test: 0.75 
 
+3)Rice (Cammeo o Osrick) 
 
-3)Heart Disease Cleveland 
+n_samples= 3810 | n_features = 7
 
-RBF_Kernel(gamma = 1 / n_features)
-Polynomial_Kernel(c=1 , d=3)
+3.1) Linear_kernel =  Time taken to train the data is 8178.576360200066s
+                      Time taken to predict the target is 2.7262883000075817s
+                      Accuracy sul set di test: 0.8705161854768154
 
-RBF_kernel = 80% , 78%, 76%, 78%, 76% tutti questi con gamma=100 | (con gamma= 1/ n_features) 87%, 82%, 83%, 85% 
-Polynomial_Kernel = 56% (c=1, d=3) , 56% (c=100, d=3), 42% (c=1000, d=3), 54% (c=0,5, d=3),52% (c=1, d=3), 50% (c=2, d=3), 61% (c=3, d=3),48% (c=4, d=3), 48% (c=5, d=5),51% (c=2, d=2), 60% (c=3, d=3),50% (c=3, d=6),52% (c=1, d=3),61% (c=1, d=3),56% (c=1, d=3),53% (c=1, d=3)
+3.2) Polynomial_kernel:(c=1, d=3):Time taken to train the data is 2933.835633499999s
+                                  Time taken to predict the target is 0.5786790999991354s
+                                  Accuracy: 42%
 
+3.3) RBF_kernel:(gamma=1): errori
+                (gamma=10): errori
+                (gamma=17):errori
+                (gamma = 1000): 100% accuracy
 
-Linear_kernel = Accuracy : 50%, 51%, 48% 
+4) KR-vs-KP:
 
-Polynomial_Kernel = Risultati con (c=1 e d=3): 53%, 49%, 51% ---------> aumentando il numero di epoche a 1500 : 
+n_samples= 3195 | n_features = 36
 
-con n_features = 13
+4.1) Linear:Time taken to train the data is 7245.070811099955s
+            Time taken to predict the target is 1.4252164999488741s
+            Accuracy sul set di test: 0.9687010954616588
 
-RBF_kernel = Risultati con (gamma= 1/n_features): 82%, 80%, errata(presenza di uno 0 nella predizione) 
-             Risultati con (gamma= 1): errati
-             Risultati con (gamma= 10, 100, 1000, 10000): errati
-             Risultati con (gamma= 1/2): 86%, errato
-             Risultati con (gamma= 1 / n_features * 2): 82%, 88%, 81%, errore 
-             Risultati con (gamma= 1 / 100): Buoni tutti intorno all'85%
-             Risultati con (gamma= 1 / 1000): Ci mette molto più tempo a fare il train e 68%
-             Risultati con (gamma= 1 / 500): Ci metto molto più tempo a fare il train  73%
-             
-Riassumendo con 1/100 < gamma < 1/10 risultati buoni 
+4.2) Polynomial:(degree=2):Time taken to train the data is 301.6706443000585s
+                           Time taken to predict the target is 2.1262137000449s
+                           Accuracy sul set di test: 0.9671361502347418
+                (degree=3):Time taken to train the data is 100.28727450000588s
+                           Time taken to predict the target is 2.0810958000365645s
+                           Accuracy sul set di test: 0.9702660406885759
+                (degree=4):Time taken to train the data is 77.35616760002449s
+                           Time taken to predict the target is 4.865526100038551s
+                           Accuracy sul set di test: 0.971830985915493
+                (degree=5):Time taken to train the data is 140.83056190004572s
+                           Time taken to predict the target is 1.9455210000742227s
+                           Accuracy sul set di test: 0.971830985915493
 
-
-4)Rice (Cammeo o Osrick) 
-
-con n_features = 7
-
-1) Linear_kernel = Il vettore dei pesi in forma duale è: [1.000e+00 0.000e+00 1.000e+00 ... 1.499e+03 0.000e+00 0.000e+00]
-                   Il bias è: 0.0
-                   Time taken to train the data is 2724.1426753000123s
-                   Time taken to predict the target is 0.34103609999874607s
-                   Da prevedere: [-1  1  1 ...  1  1  1]
-                   Predetto: [-1.  1. -1. ... -1.  1.  1.]
-                   Accuracy: 0.9046369203849519
-
-2) Polynomial_kernel = Risultati con (c=1, d=3): Time taken to train the data is 2933.835633499999s
-                                                 Time taken to predict the target is 0.5786790999991354s
-                                                 Accuracy: 42%
-
-3) RBF_kernel = Risultati con (gamma=1): errori
-                              (gamma=10): errori
-                              (gamma=17):errori
-                              (gamma = 1000): 100% accuracy
-
-
-
-
+4.3) RBF:(gamma=1): Time taken to train the data is 91.37280770007055s
+                    Time taken to predict the target is 4.3075353999156505s
+                    Accuracy sul set di test: 0.9280125195618153 
+         (gamma=2): Time taken to train the data is 73.27573130000383s
+                    Time taken to predict the target is 4.365924600046128s
+                    Accuracy sul set di test: 0.9280125195618153
+        (gamma=0.1):Time taken to train the data is 117.32166829996277s
+                    Time taken to predict the target is 4.2910485999891534s
+                    Accuracy sul set di test: 0.9624413145539906
+        (gamma=0.2):Time taken to train the data is 169.90422180003952s
+                    Time taken to predict the target is 4.3553756000474095s
+                    Accuracy sul set di test: 0.9687010954616588
+        (gamma=0.15):Time taken to train the data is 86.72640460007824s
+                     Time taken to predict the target is 4.159189600031823s
+                     Accuracy sul set di test: 0.9687010954616588

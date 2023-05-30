@@ -15,19 +15,16 @@ class MyDualPerceptron:
         self.a = np.zeros(n_samples)
         self.b = 0
         self.R = np.max(np.linalg.norm(X, axis=1))
-        K_train = np.zeros((n_samples,n_samples))
         
-        for _ in range(epochs):
-            no_mistakes = True
-
+        for k in range(epochs):
+            n_err = 0
             for i in range(n_samples):
-                prediction = sum(self.a[j] * y[j] * kernel(X[j],X[i]) for j in range(n_samples)) + self.b
+                prediction = sum(self.a[j] * y[j] * kernel(X[j],X[i]) + self.b for j in range(n_samples))
                 if y[i] * prediction <= 0:
                     self.a[i] += 1
                     self.b += y[i] * self.R**2
-                    no_mistakes = False
-
-            if no_mistakes:
+                    n_err += 1
+            if n_err == 0:
                 break
             
         return self.a, self.b
