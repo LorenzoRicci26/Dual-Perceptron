@@ -47,6 +47,9 @@ n_samples= 1000 | n_features = 7 identificate come le più rilevanti all'interno
 Linear-Kernel:Time taken to train the data is 537.7129719000077s
               Time taken to predict the target is 0.21054480003658682s
               Accuracy sul set di test: 0.74
+(3000 samples)Time taken to train the data is 6540.7813246999995s
+              Time taken to predict the target is 1.4751514999989013s
+              Accuracy sul set di test: 0.7366666666666667
 
 Polynomial_Kernel:(degree=2):Time taken to train the data is 604.7094605000457s
                              Time taken to predict the target is 0.2401421999093145s

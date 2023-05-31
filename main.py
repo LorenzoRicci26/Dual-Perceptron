@@ -72,8 +72,8 @@ def main():
         #relationship
         df['relationship'] = df['relationship'].map({'Not-in-family': 0, 'Wife': 1, 'Other-relative': 2, 'Unmarried': 3,'Husband': 4,'Own-child': 5}).astype(int)
 
-        X = df.iloc[:1000, :-1].values
-        y = df.iloc[:1000 , -1].values
+        X = df.iloc[:3000, :-1].values
+        y = df.iloc[:3000 , -1].values
 
         print(X)
 
