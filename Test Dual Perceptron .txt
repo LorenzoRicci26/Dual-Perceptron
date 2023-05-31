@@ -48,16 +48,28 @@ Linear-Kernel:Time taken to train the data is 537.7129719000077s
               Time taken to predict the target is 0.21054480003658682s
               Accuracy sul set di test: 0.74
 
-Polynomial_Kernel = Risultati con (c=1, d=2): Time taken to train the data is 604.7094605000457s
-                                              Time taken to predict the target is 0.2401421999093145s
-                                              Accuracy sul set di test: 0.7366666666666667
-                              con (c=1, d=3): Time taken to train the data is 623.953101699939s
-                                              Time taken to predict the target is 0.24338980007451028s
-                                              Accuracy sul set di test: 0.7533333333333333
+Polynomial_Kernel:(degree=2):Time taken to train the data is 604.7094605000457s
+                             Time taken to predict the target is 0.2401421999093145s
+                             Accuracy sul set di test: 0.7366666666666667, (874.3212939000223s)--->0.76
+                  (degree=3):Time taken to train the data is 623.953101699939s
+                             Time taken to predict the target is 0.24338980007451028s
+                             Accuracy sul set di test: 0.7533333333333333 (887.771516699926s)--->0.69
+                  (degree=4):Time taken to train the data is 753.4036258999258s
+                             Time taken to predict the target is 0.18600609991699457s
+                             Accuracy sul set di test: 0.58
 
-RBF_kernel = (gamma = 2): Time taken to train the data is 1615.423785699997s
-                          Time taken to predict the target is 0.6563004999188706s
-                          Accuracy sul set di test: 0.75 
+RBF_kernel =(gamma=1):Time taken to train the data is 2050.8801598999416s
+                      Time taken to predict the target is 0.4613468999741599s
+                      Accuracy sul set di test: 0.76 
+            (gamma=2):Time taken to train the data is 1615.423785699997s
+                      Time taken to predict the target is 0.6563004999188706s
+                      Accuracy sul set di test: 0.75 
+            (gamma=3):Time taken to train the data is 1930.963743899949s
+                      Time taken to predict the target is 0.5015923999017105s
+                      Accuracy sul set di test: 0.765
+            (gamma=0.1):Time taken to train the data is 3601.8291987000266s
+                        Time taken to predict the target is 0.4583304999396205s
+                        Accuracy sul set di test: 0.775
 
 3)Rice (Cammeo o Osrick) 
 
@@ -67,14 +79,31 @@ n_samples= 3810 | n_features = 7
                       Time taken to predict the target is 2.7262883000075817s
                       Accuracy sul set di test: 0.8705161854768154
 
-3.2) Polynomial_kernel:(c=1, d=3):Time taken to train the data is 2933.835633499999s
-                                  Time taken to predict the target is 0.5786790999991354s
-                                  Accuracy: 42%
+3.2) Polynomial_kernel:(degree=2):Time taken to train the data is 24.11233719997108s
+                                  Time taken to predict the target is 2.445953299989924s
+                                  Accuracy: 1.0
+                       (degree=3):Time taken to train the data is 24.91766000003554s
+                                  Time taken to predict the target is 2.617722800001502s
+                                  Accuracy sul set di test: 0.9251968503937008
+                       (degree=4):Time taken to train the data is 25.220657699974254s
+                                  Time taken to predict the target is 2.6191924000158906s
+                                  Accuracy sul set di test: 1.0
+                       (degree=5):Time taken to train the data is 24.42691040004138s
+                                  Time taken to predict the target is 2.5602625000756234s
+                                  Accuracy sul set di test: 0.8031496062992126
 
-3.3) RBF_kernel:(gamma=1): errori
-                (gamma=10): errori
-                (gamma=17):errori
-                (gamma = 1000): 100% accuracy
+3.3) RBF_kernel:(gamma=1):Time taken to train the data is 53.72690450004302s
+                          Time taken to predict the target is 5.9136080999160185s
+                          Accuracy sul set di test: 1.0
+                (gamma=2):Time taken to train the data is 58.0286660999991s
+                          Time taken to predict the target is 6.946406499948353s
+                          Accuracy sul set di test: 1.0
+                (gamma=0.1):Time taken to train the data is 66.91749470005743s
+                            Time taken to predict the target is 6.665008899988607s
+                            Accuracy sul set di test: 1.0
+                (gamma=0.5):Time taken to train the data is 59.78880349989049s
+                            Time taken to predict the target is 6.908514400012791s
+                            Accuracy sul set di test: 1.0
 
 4) KR-vs-KP:
 
