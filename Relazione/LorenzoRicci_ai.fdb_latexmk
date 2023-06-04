@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1685915357 "c:/Users/Lorenzo Ricci/Università/Dual-Perceptron-2/Relazione/LorenzoRicci_ai.tex" "LorenzoRicci_ai.pdf" "LorenzoRicci_ai" 1685915360 0
+["pdflatex"] 1685915701 "c:/Users/Lorenzo Ricci/Università/Dual-Perceptron-2/Relazione/LorenzoRicci_ai.tex" "LorenzoRicci_ai.pdf" "LorenzoRicci_ai" 1685915703 0
   "C:/Users/Lorenzo Ricci/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1685912296 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/Lorenzo Ricci/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1681416733 23182819 38078994f45beae75b7529218917c3e5 ""
   "C:/Users/Lorenzo Ricci/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc" 1256933040 2375 baa924870cfb487815765f9094cf3728 ""
@@ -77,11 +77,11 @@
   "C:/Users/Lorenzo Ricci/AppData/Local/Programs/MiKTeX/tex/latex/tools/array.sty" 1667245866 12691 5b542990fe866f3d772f71346cf85b95 ""
   "C:/Users/Lorenzo Ricci/AppData/Local/Programs/MiKTeX/tex/latex/tools/longtable.sty" 1667245866 12892 af5f5e872a6e322f3e5ba2c881288a56 ""
   "C:/Users/Lorenzo Ricci/AppData/Local/Programs/MiKTeX/tex/latex/tools/tabularx.sty" 1667245866 7147 be6981d9f5d866a5634048c4a11814a9 ""
-  "LorenzoRicci_ai.aux" 1685915360 975 e4c48f4b5565be08085002f8fbe90469 "pdflatex"
-  "LorenzoRicci_ai.tex" 1685915356 13016 59c74b2d50f9d6af1fa9e97306167dfe ""
-  "LorenzoRicci_ai.toc" 1685915360 376 481c8f53947934232cb577b36f561f4f "pdflatex"
+  "LorenzoRicci_ai.aux" 1685915703 975 e4c48f4b5565be08085002f8fbe90469 "pdflatex"
+  "LorenzoRicci_ai.tex" 1685915697 12517 9a58aff4d34d937c10432d2e2d11ee37 ""
+  "LorenzoRicci_ai.toc" 1685915703 376 481c8f53947934232cb577b36f561f4f "pdflatex"
   "Unifi_nuovo.svg.png" 1681720938 298782 f423b8fb8a6866df6937f31568f6d2c8 ""
-  "c:/Users/Lorenzo Ricci/Università/Dual-Perceptron-2/Relazione/LorenzoRicci_ai.tex" 1685915356 13016 59c74b2d50f9d6af1fa9e97306167dfe ""
+  "c:/Users/Lorenzo Ricci/Università/Dual-Perceptron-2/Relazione/LorenzoRicci_ai.tex" 1685915697 12517 9a58aff4d34d937c10432d2e2d11ee37 ""
   "pseudocodice_perceptron.png" 1681720938 108467 1c915715001fdfb1895d7459a196443a ""
   (generated)
   "LorenzoRicci_ai.aux"
