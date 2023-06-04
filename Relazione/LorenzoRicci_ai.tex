@@ -7,6 +7,16 @@
 \usepackage{placeins}
 \usepackage{longtable}
 \usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{geometry}
+
+\geometry{
+  total={210mm,297mm},
+  left=25mm,
+  right=25mm,
+  top=25mm,
+  bottom=25mm,
+}
 
 \author{\large{Lorenzo Ricci}}
 \title{\textbf{\fontsize{34pt}{45pt}\selectfont Dual Perceptron}}
@@ -85,34 +95,56 @@
 		\item Heart Disease: Questo data set contiene 13 colonne e 1026 righe e ha lo scopo di classificare i pazienti in base alla presenza o assenza di malattie cardiache. Sia il kernel lineare che polinomiale non hanno dato buoni risultati, anche con valori di \textit{d} alti l'accuracy non cambia. L'rbf kernel invece non ha fornito un risultato ottimo ma, con valori di gamma compresi tra 1/100 e 1/20, ma accettabile.
 		\item Rice (Cammeo and Osmancik): L'ultimo data set contiene 7 colonne e 3810 righe e ha lo scopo di prevedere la composizione chimica del riso in base alle sue caratteristiche geografiche e varietali, in particolare se è "Cammeo" o "Osmancik". Notiamo in questo data set, come in Adult, una grande necessità di tempo nell'addestrare i dati. Migliori prestazioni da parte del kernel lineare rispetto a quello polinomiale ma comunque poco accettabili. Invece con valori di gamma molto alti l'rbf riesce a predire con una perfetta accuracy.
 	\end{itemize}
-	\begin{table}[]
-		\resizebox{\columnwidth}{!}{%
-		\begin{tabular}{@{}l|l|l|l|@{}}
-		\cmidrule(l){2-4}
-		 &
-		  Linear\_kernel &
-		  Polynomial\_kernel &
-		  RBF\_kernel \\ \midrule
-		\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Breast Cancer Wisconsin (Diagnostic)\\  con n\_features = 30\end{tabular}} &
-		  37,8\% &
-		  \begin{tabular}[c]{@{}l@{}}(c=1, d=2) : 43\%\\ (c=1, d=3) : 38\%\\ (c=1, d=n\_features) : 35\%\end{tabular} &
-		  \begin{tabular}[c]{@{}l@{}}Con un valore di \\ gamma \textgreater{}= 17: 100\%\end{tabular} \\ \midrule
-		\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Adult \\ \\ con n\_features = 14\end{tabular}} &
-		  \begin{tabular}[c]{@{}l@{}}100 \%\\ Time taken to train the data is 349s\\ Time taken to predict the target is 18s\end{tabular} &
-		  \begin{tabular}[c]{@{}l@{}}Risultati con (c=1, d=2): 100\%\\                                         Time taken to train the data is 414s\\                                         Time taken to predict the target is 22s\\ Risultati con (c=1, d=3): Lasciato andare per 1 ora ma non ha dato risultato\end{tabular} &
-		  Con gamma=1: 100\% Time taken to train the data 5840s and to predict 522s \\ \midrule
-		\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Heart Disease\\ \\ con n\_features=13\end{tabular}} &
-		  50\% &
-		  \begin{tabular}[c]{@{}l@{}}Risultati con (c=1 e d=3): 51\% \\ Risultati con (c=1 e d=2): 52,5\%\end{tabular} &
-		  \begin{tabular}[c]{@{}l@{}}Riassumendo con 1/100 \textless gamma \textless 1/20 risultati buoni\\ \\ tutti intorno all'85\%\end{tabular} \\ \midrule
-		\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Rice (Cammeo and Osmancik)\\ \\ con n\_features=7\end{tabular}} &
-		  \begin{tabular}[c]{@{}l@{}}58\%\\ Time taken to train the data is 2371s\\ Time taken to predict the target is 0.26s\end{tabular} &
-		  \begin{tabular}[c]{@{}l@{}}Risultati con (c=1, d=3): 42\%\\                                         Time taken to train the data is 2933s\\                                         Time taken to predict the target is 0.578s\end{tabular} &
-		  Con gamma=1000: 100\% \\ \bottomrule
-		\end{tabular}%
-		}
-	\end{table}
     Dai risultati sperimentali si nota subito una migliore capacità generale da parte del kernel rbf di separare i dati, rispetto a quello lineare e polinomiale. I risultati non ottimali degli altri due potrebbero dipendere da un scarsa capacità di quest'ultimi nel separare dati di maggiore difficoltà, risultati migliori potrebbero essere ottenuti aumentando il numero di epoche con cui viene addestrato l'algoritmo. 
 	Questa conclusione nasce dall'analisi del vettore alpha nel momento in cui ha finito il suo addestramento e che possiede al suo interno molti valori pari a 1000. Questo risultato significa che le epoche non sono state sufficienti alla classificazione di quei punti, di conseguenza un aumento di epoche sarà necessario per migliori prestazioni future, ovviamente a discapito del tempo di esecuzione.
 	Quest'ultimo è elevato per i metodi \textit{train()} e \textit{predict()} per i data set Adult e Rice può dipendere da due fattori: il primo è il maggiore numero di esempi(righe), in particolare Adult, e il secondo invece una maggiore difficoltà dei dati stessi.
+	\newpage
+	
+\begin{table}[htbp]
+	\centering
+	\begin{tabular}{|c|c|c|}
+	  \hline
+	  \multicolumn{1}{|c|}{} & \multicolumn{1}{c|}{Breast Cancer Winsconsin} & \multicolumn{1}{c|}{Adult} \\
+	  \hline
+	  \multirow{3}{*}{Linear Kernel} & & \\
+	  & & \\
+	  & & \\
+	  \hline
+	  \multirow{3}{*}{Polynomial Kernel} & & \\
+	  & & \\
+	  & & \\
+	  \hline
+	  \multirow{3}{*}{Radial Basis Function} & & \\
+	  & & \\
+	  & & \\
+	  \hline
+	\end{tabular}
+	\caption{Prima tabella}
+  \end{table}
+  
+  \begin{table}[htbp]
+	\centering
+	\begin{tabular}{|c|c|c|}
+	  \hline
+	  \multicolumn{1}{|c|}{} & \multicolumn{1}{c|}{Rice \& Cammeo} & \multicolumn{1}{c|}{King-Rook\_vs\_King-Pawn} \\
+	  \hline
+	  \multirow{3}{*}{Linear Kernel} & Time take to train the data = 8178s   & Time taken to train the data is 7245s\\
+	  & Time taken to predict the data = 2.72s & Time taken to predict the target is 1.4s\\
+	  & Accuracy sul set di test: 0.87 & Accuracy sul set di test: 0.9687\\
+	  \hline
+	  \multirow{3}{*}{Polynomial Kernel} & (d=2):Time taken to train the data is 24s& (d=2):Time taken to predict the data is 302s \\
+	  & Time taken to predict the target is 2.45s& Time taken to predict the data is 2.1s\\
+	  & Accuracy: 1.0 & Accuracy sul set di test 0.9671\\
+	  \hline
+	  \multirow{3}{*}{Radial Basis Function} &&(gamma=1): Time to train: 91.4s\\
+	  && Time to predict: 4.3s \\
+	  && Accuracy sul set di test: 0.93 \\
+	  \hline
+	\end{tabular}
+	\caption{Seconda tabella}
+  \end{table}
+	Nel codice fornito, ho utilizzato il pacchetto geometry per impostare le dimensioni del foglio A4, e ho definito i margini a 25 mm su tutti i lati. In questo modo, le tabelle saranno adatte per essere inserite in una relazione.
+	Assicurati di includere i pacchetti multirow e geometry nel tuo documento LaTeX per utilizzare il codice correttamente. Puoi anche personalizzare ulteriormente le dimensioni dei margini o altri aspetti delle tabelle in base alle tue esigenze.
+\end{document}
+
 \end{document}
