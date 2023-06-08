@@ -63,9 +63,9 @@
 	\subsection{KernelFunctions}
 	La classe KernelFunctions fornisce tre metodi, uno per ogni tipologia di funzione kernel. 
 	\begin{itemize}
-		\item Linear kernel: prende in ingresso una matrice X e ritorna il prodotto scalare tra X e X trasposta.
-		\item Polynomial kernel: prende in ingresso una matrice X, un paramentro \textit{c} che viene sommato al prodotto scalare come nel kernel lineare e un ultimo paramento \textit{d} che definisce il grado del polinomio. 
-		\item RBF kernel: prende in ingresso una matrice X e un parametro \textit{gamma} e ritorna l'esponenziale della norma negativa moltiplicata per -\textit{gamma}, il cui tutto è elevato al quadrato.
+		\item Linear kernel: prende in ingresso un \textit{$x_1$}, un \textit{$x_2$} e ritorna il prodotto scalare tra x1 e x2.
+		\item Polynomial kernel: prende in ingresso un \textit{$x_1$}, un \textit{$x_2$} e un \textit{degree}, che definisce il grado del polinomio. 
+		\item RBF kernel: prende in ingresso un \textit{$x_1$}, un \textit{$x_2$} e un parametro \textit{gamma} e ritorna l'esponenziale della norma negativa moltiplicata per -\textit{gamma}, il cui tutto è elevato al quadrato.
 	\end{itemize}
 	Per l'implementazione delle operazioni matematiche all'interno di questi metodi è stata utilizzata la libreria "numpy".
     \subsection{MyDualPerceptron}
@@ -83,13 +83,15 @@
     Una volta eseguita la funzione di \textit{train()}, verrà chiamato il metodo \textit{predict()} che prende anch'esso in ingresso: X e y, i quali però non saranno uguali a quelli del \textit{train()}, ma saranno un'altra porzione di data set che viene utilizzata per testare l'accuracy dell'algoritmo nel predire i dati del target in output, i paramentri del classificatore {a} e {b} e lo stesso metodo kernel utilizzato per l'addestramento.
     \subsection{Main}
 	Lo scopo principale della classe \textit{Main} è quello di leggere uno dei quattro data set messi a disposizione. 
-	Anche questi potranno essere scelti scrivendo un numero a scelta, in particolare:
+	Il data set può essere scelto scrivendo un numero a scelta che verrà richiesto a schermo, in particolare:
 	\begin{itemize}
 		\item 1: Breast Cancer Wisconsin (Diagnostic)
 		\item 2: Adult
 		\item 3: Rice (Cammeo and Osmancik)
 		\item 4: King-Rook vs King-Pawn
 	\end{itemize}
+    Da ogni data set vengono prese due porzioni: la prima X, che contiene tutte le colonne e le righe dei dati che servono all'algoritmo per dedurre il problema di classificazione binaria, mentre la seconda y che contiene il vettore dei target. Il programma sfrutta: la libreria "numpy" per eseguire l'operazione \textit{where()}, che modifica i valori interni in base a un vincolo per impostarli ad 1 o -1, la libreria "pandas" per leggere i data set in formato "csv" e prendere le porzioni di data set interessato grazie al metodo \textit{iloc()} e infine la libreria "sklearn" per i metodi \textit{train\_test\_split()} e \textit{accuracy\_score()} per, rispettivamente, dividere X e y in un parte destinata all'addestramento e una parte invece destinata al test e al calcolo dell'accuracy della predizione finale.
+	Successivamente vengono chiamati i metodi \textit{train()} e \textit{predict()} per l'esecuzione dell'addestramento dell'algoritmo e la predizione sui dati di test. Inoltre, viene calcolato anche il tempo che l'algoritmo impiega a svolgere i propri metodi, grazie ad un ulteriore libreria "timeit".
 	\subsection{Preprocessing}
     Per ogni data set viene fatto un lavoro a priori di \textit{preprocessing} per rimuovere dati mancanti, elimare dati "rumorosi" e normalizzarli, cioè portare ogni dato a scala comune, in modo che questi possono essere confrontati tra di loro correttamente. Ciò aiuta a evitare che attributi con valori più elevati siano più dominanti rispetto a quelli con valori più bassi durante la fase di addestramento.
 	Di seguito viene descritto quello che è stato fatto per ogni dataset:
@@ -99,8 +101,6 @@
 		\item Rice (Cammeo \& Osmancik): E' stata normalizzata ogni colonna del dataset attraverso la libreria \textit{sklearn.preprocessing} utilizzando il metodo \textit{fit\_tranform()} di \textit{StandardScaler}.
 		\item King-Rook vs King-Pawn: All'interno di questo data set sono presenti per ogni attributo delle variabili categoriche quindi, utilizzo la libreria \textit{sklearn.preprocessing} per utilizzare il metodo \textit{fit\_tranform()} di \textit{LabelEncoder}. Una volta fatto questo vado a normalizzare i dati attraverso la libreria \textit{sklearn.preprocessing} utilizzando il metodo \textit{fit\_tranform()} di \textit{StandardScaler}.
 	\end{itemize} 
-	Da ogni data set vengono prese due porzioni: la prima X, che contiene tutte le colonne e le righe dei dati che servono all'algoritmo per dedurre il problema di classificazione binaria, mentre la seconda y che contiene il vettore dei target. Il programma sfrutta: la libreria "numpy" per eseguire l'operazione \textit{where()}, che modifica i valori interni in base a un vincolo per impostarli ad 1 o -1, la libreria "pandas" per leggere i data set in formato "csv" e prendere le porzioni di data set interessato grazie al metodo \textit{iloc()} e infine la libreria "sklearn" per i metodi \textit{train\_test\_split()} e \textit{accuracy\_score()} per, rispettivamente, dividere X e y in un parte destinata all'addestramento e una parte invece destinata al test e al calcolo dell'accuracy della predizione finale.
-	Successivamente vengono chiamati i metodi \textit{train()} e \textit{predict()} per l'esecuzione dell'addestramento dell'algoritmo e la predizione sui dati di test. Inoltre, viene calcolato anche il tempo che l'algoritmo impiega a svolgere i propri metodi, grazie ad un ulteriore libreria "timeit".
 	\section{Analisi}
 	All'interno di questa sezione viene analizzata l'accuracy dell'algoritmo DualPerceptron nel riuscire a predire i dati di test dei vari data set, utilizzando le varie tipologie di kernel. Alla fine viene mostrata una tabella con tutti i calcoli del tempo che è risultato necessario nell'addestrare e nel predirede le matrici rispettivamente, di train e di test.  
 	Analizzando nel dettaglio i risultati e supponendo che la mole di dati di addestramento sia 80\% per addestrare e il 20\% per il test e che l'algoritmo è stato addestrato su 1000 epoche, vediamo che:
@@ -113,41 +113,43 @@
     In generale guardando i dati sperimentali sulle tabelle si nota che l'rbf kernel in generale è il migliore nel separare i dati anche se a volte questo ha un costo in termini di tempo, mentre quello lineare non disponendo di un valore che può variare, come invece hanno quello polinomiale e rbf, in generale lo si potrebbe definire più inferiore rispetto agli altri due nella separazione. Infine, per il dataset Adult avevo eseguito ulteriori test su 3000 samples per vedere se effettivamente aumentava solo il tempo di addestramento o anche l'accuracy. Si nota che per il kernel lineare il tempo aumenta in maniera esponenziale passando da 537 secondi a 6340 secondi, con un peggioramento dell'accuracy di 0.4\%. Per il kernel polinomiale invece, con d=2 il tempo aumenta di 200 secondi circa, ma l'accuracy aumenta del 2.4\%. Infine per il test rbf il test con gamma=1 ecc...
 	\begin{table}[htbp]
 	\centering
-	\begin{tabular}{|c|c|c|}
+	\begin{adjustbox}{width=\textwidth}
+	  \begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
 	  \hline
-	  \multicolumn{1}{|c|}{} & \multicolumn{1}{c|}{Breast Cancer Winsconsin(Diagnostic)} & \multicolumn{1}{c|}{Adult} \\
+	  \multicolumn{1}{|c|}{} & \multicolumn{1}{c|}{Breast Cancer Winsconsin} & \multicolumn{1}{c|}{Adult} \\
 	  \hline
-	  \multirow{3}{*}{Linear Kernel} & Time take to train = 211s & Time taken to train = 537.7s\\
-	  & Time taken to predict = 0.04s & Time taken to predict = 0.2s\\
-	  & Accuracy sul set di test: 0.96 & Accuracy sul set di test: 0.74\\
+	  \multirow{3}{*}{Linear Kernel} & Time take to train = 211s & Time  to train = 537.7s\\
+	  & Time  to predict = 0.04s & Time  to predict = 0.2s\\
+	  & Accuracy test: 0.96 & Accuracy test: 0.74\\
 	  \hline
-	  \multirow{12}{*}{Polynomial Kernel} & (d=2): Time taken to train = 317s & (d=2): Time taken to train = 604s \\
-	  & Time taken to predict = 0.07s & Time taken to predict = 0.24s\\
-	  & Accuracy sul set di test: 0.947s & Accuracy sul set di test 0.73666\\
-	  & (d=3): Time taken to train = 7.73s & (d=3): Time taken to train = 623.9s\\
-	  & Time taken to predict = 0.07s & Time taken to predict = 0.24s\\
-	  & Accruacy sul set di test = 0.956s & Accuracy sul set di test = 0.73666\\
-	  & (d=4): Time taken to train = 13.97s & (d=4): Time taken to train = 753.4ss\\
-	  & Time to predict = 0.07s & Time taken to predict = 0.18s\\
-	  & Accuracy sul set di test = 0.938 & Accuracy sul set di test = 0.58\\
-	  & (d=5): Time taken to train = 43.87s & (d=5): Time taken to train = s\\
-	  & Time taken to predict = 0.066s & Time taken to predict = s\\
-	  & Accuracy sul set di test = 0.921 & Accuracy sul set di test = \\
+	  \multirow{12}{*}{Polynomial Kernel} & (d=2): Time  to train = 317s & (d=2): Time  to train = 604s \\
+	  & Time  to predict = 0.07s & Time  to predict = 0.24s\\
+	  & Accuracy test: 0.947s & Accuracy test 0.73666\\
+	  & (d=3): Time  to train = 7.73s & (d=3): Time  to train = 623.9s\\
+	  & Time  to predict = 0.07s & Time  to predict = 0.24s\\
+	  & Accruacy test = 0.956s & Accuracy test = 0.73666\\
+	  & (d=4): Time  to train = 13.97s & (d=4): Time  to train = 753.4s\\
+	  & Time to predict = 0.07s & Time  to predict = 0.18s\\
+	  & Accuracy test = 0.938 & Accuracy test = 0.58\\
+	  & (d=5): Time  to train = 43.87s & (d=5): Time  to train = 759s\\
+	  & Time  to predict = 0.066s & Time  to predict = 0.17s\\
+	  & Accuracy test = 0.921 & Accuracy test = 0.55\\
 	  \hline
-	  \multirow{12}{*}{Radial basis Function} & (gamma=1):Time taken to train = 2.5s & (gamma = 1): Time taken to train = 2050.88s\\
-	  & Time taken to predict = 0.15s& Time taken to predict = 0.46s\\
-	  & Accuracy sul set di test: 0.939 & Accuracy sul set di test = 0.76\\
-	  & (gamma=2): Time taken to train = 2.5s & (gamma = 2): Time taken to train = 1615s\\
-	  & Time taken to predict = 0.15s & Time taken to predict = 0.656s\\
-	  & Accruacy sul set di test = 0.929 & Accuracy sul set di test = 0.75\\
-	  & (gamma=0.1): Time taken to train = 4.36s & (gamma = 3): Time taken to train = 1930s\\
-	  & Time taken to predict = 0.15s & Time taken to predict = 0.5s\\
-	  & Accuracy sul set di test = 0.947 & Accuracy sul set di test = 0.765\\
-	  & (gamma=0.5): Time taken to train = 2.56s & (gamma = 0.1): Time taken to train = 3601.8s\\
-	  & Time taken to predict = 0.16s & Time taken to predict = 0.458s\\
-	  & Accuracy sul set di test = 0.964 & Accuracy sul set di test = 0.775\\
+	  \multirow{12}{*}{Radial basis Function} & (gamma=1):Time  to train = 2.5s & (gamma = 1): Time  to train = 2050.88s\\
+	  & Time  to predict = 0.15s& Time  to predict = 0.46s\\
+	  & Accuracy test: 0.939 & Accuracy test = 0.76\\
+	  & (gamma=2): Time  to train = 2.5s & (gamma = 2): Time  to train = 1615s\\
+	  & Time  to predict = 0.15s & Time  to predict = 0.656s\\
+	  & Accracy test = 0.929 & Accuracy test = 0.75\\
+	  & (gamma=0.1): Time  to train = 4.36s & (gamma = 3): Time  to train = 1930s\\
+	  & Time  to predict = 0.15s & Time  to predict = 0.5s\\
+	  & Accuracy test = 0.947 & Accuracy test = 0.765\\
+	  & (gamma=0.5): Time  to train = 2.56s & (gamma = 0.1): Time  to train = 3601.8s\\
+	  & Time  to predict = 0.16s & Time  to predict = 0.458s\\
+	  & Accuracy test = 0.964 & Accuracy test = 0.775\\
 	  \hline
-	\end{tabular}
+	  \end{tabularx}
+    \end{adjustbox}
 	\caption{Tabella Breast Cancer Winsconsin (Diagnostic) e Adult}
   \end{table}
   \begin{table}[htbp]
@@ -157,35 +159,35 @@
 	  \hline
 	  \multicolumn{1}{|c|}{} & \multicolumn{1}{c|}{Rice \& Cammeo} & \multicolumn{1}{c|}{King-Rook\_vs\_King-Pawn} \\
 	  \hline
-	  \multirow{3}{*}{Linear Kernel} & Time take to train = 8178s   & Time taken to train = 7245s\\
-	  & Time taken to predict = 2.72s & Time taken to predict = 1.4s\\
-	  & Accuracy sul set di test: 0.87 & Accuracy sul set di test: 0.9687\\
+	  \multirow{3}{*}{Linear Kernel} & Time take to train = 8178s   & Time  to train = 7245s\\
+	  & Time  to predict = 2.72s & Time  to predict = 1.4s\\
+	  & Accuracy test: 0.87 & Accuracy test: 0.9687\\
 	  \hline
-	  \multirow{12}{*}{Polynomial Kernel} & (d=2): Time taken to train = 24s & (d=2): Time taken to predict = 302s \\
-	  & Time taken to predict = 2.45s & Time taken to predict = 2.1s\\
-	  & Accuracy sul set di test: 1.0 & Accuracy sul set di test 0.9671\\
-	  & (d=3): Time taken to train = 25s & (d=3): Time taken to train = 100.28s\\
-	  & Time taken to predict = 2.6s & Time taken to predict = 2.08s\\
-	  & Accruacy sul set di test = 0.92 & Accuracy sul set di test = 0.9702\\
-	  & (d=4): Time taken to train = 25.22s & (d=4): Time taken to train = 77.35s\\
-	  & Time to predict = 2.62s & Time taken to predict = 4.9s\\
-	  & Accuracy sul set di test = 1.0 & Accuracy sul set di test = 0.9718\\
-	  & (d=5): Time taken to train = 24.5s & (d=5): Time taken to train = 140.8s\\
-	  & Time taken to predict = 2.6s & Time taken to predict = 1.95s\\
-	  & Accuracy sul set di test = 0.803 & Accuracy sul set di test = 0.9718\\
+	  \multirow{12}{*}{Polynomial Kernel} & (d=2): Time  to train = 24s & (d=2): Time  to predict = 302s \\
+	  & Time  to predict = 2.45s & Time  to predict = 2.1s\\
+	  & Accuracy test: 1.0 & Accuracy test 0.9671\\
+	  & (d=3): Time  to train = 25s & (d=3): Time  to train = 100.28s\\
+	  & Time  to predict = 2.6s & Time  to predict = 2.08s\\
+	  & Accruacy test = 0.92 & Accuracy test = 0.9702\\
+	  & (d=4): Time  to train = 25.22s & (d=4): Time  to train = 77.35s\\
+	  & Time to predict = 2.62s & Time  to predict = 4.9s\\
+	  & Accuracy test = 1.0 & Accuracy test = 0.9718\\
+	  & (d=5): Time  to train = 24.5s & (d=5): Time  to train = 140.8s\\
+	  & Time  to predict = 2.6s & Time  to predict = 1.95s\\
+	  & Accuracy test = 0.803 & Accuracy test = 0.9718\\
 	  \hline
-	  \multirow{12}{*}{Radial basis Function} & (gamma=1):Time taken to train = 53.72 & (gamma = 1): Time taken to train = 91.3s\\
-	  & Time taken to predict = 5.9s& Time taken to predict = 4.3s\\
-	  & Accuracy sul set di test: 1.0 & Accuracy sul set di test = 0.928\\
-	  & (gamma=2): Time taken to train = 58s & (gamma = 2): Time taken to train = 73.2s\\
-	  & Time taken to predict = 6.94s & Time taken to predict = 4.4s\\
-	  & Accruacy sul set di test = 1.0 & Accuracy sul set di test = 0.928\\
-	  & (gamma=0.1): Time taken to train = 66.9s & (gamma = 0.1): Time taken to train = 117.3s\\
-	  & Time taken to predict = 6.7s & Time taken to predict = 4.2s\\
-	  & Accuracy sul set di test = 1.0 & Accuracy sul set di test = 0.9624\\
-	  & (gamma=0.5): Time taken to train = 60s & (gamma = 0.2): Time taken to train = 169.9s\\
-	  & Time taken to predict = 6.9s & Time taken to predict = 4.1s\\
-	  & Accuracy sul set di test = 1.0 & Accuracy sul set di test = 0.9687\\
+	  \multirow{12}{*}{Radial basis Function} & (gamma=1):Time  to train = 53.72 & (gamma = 1): Time  to train = 91.3s\\
+	  & Time  to predict = 5.9s& Time  to predict = 4.3s\\
+	  & Accuracy test: 1.0 & Accuracy test = 0.928\\
+	  & (gamma=2): Time  to train = 58s & (gamma = 2): Time  to train = 73.2s\\
+	  & Time  to predict = 6.94s & Time  to predict = 4.4s\\
+	  & Accruacy test = 1.0 & Accuracy test = 0.928\\
+	  & (gamma=0.1): Time  to train = 66.9s & (gamma = 0.1): Time  to train = 117.3s\\
+	  & Time  to predict = 6.7s & Time  to predict = 4.2s\\
+	  & Accuracy test = 1.0 & Accuracy test = 0.9624\\
+	  & (gamma=0.5): Time  to train = 60s & (gamma = 0.2): Time  to train = 169.9s\\
+	  & Time  to predict = 6.9s & Time  to predict = 4.1s\\
+	  & Accuracy test = 1.0 & Accuracy test = 0.9687\\
 	  \hline
 	  \end{tabularx}
     \end{adjustbox}
