@@ -9,6 +9,7 @@
 \usepackage{booktabs}
 \usepackage{multirow}
 \usepackage{geometry}
+\usepackage{adjustbox}
 
 \geometry{
   total={210mm,297mm},
@@ -151,7 +152,8 @@
   \end{table}
   \begin{table}[htbp]
 	\centering
-	\begin{tabular}{|c|c|c|}
+	\begin{adjustbox}{width=\textwidth}
+	  \begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
 	  \hline
 	  \multicolumn{1}{|c|}{} & \multicolumn{1}{c|}{Rice \& Cammeo} & \multicolumn{1}{c|}{King-Rook\_vs\_King-Pawn} \\
 	  \hline
@@ -185,7 +187,8 @@
 	  & Time taken to predict = 6.9s & Time taken to predict = 4.1s\\
 	  & Accuracy sul set di test = 1.0 & Accuracy sul set di test = 0.9687\\
 	  \hline
-	\end{tabular}
+	  \end{tabularx}
+    \end{adjustbox}
 	\caption{Tabella Rice \& Cammeo e King-Rook vs King-Pawn}
   \end{table}
 \end{document}
