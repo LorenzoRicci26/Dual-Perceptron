@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.4.13)  4 JUN 2023 23:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.4.13)  8 JUN 2023 18:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -304,23 +304,28 @@ File: pseudocodice_perceptron.png Graphic file (type png)
 Package pdftex.def Info: pseudocodice_perceptron.png  used on input line 59.
 (pdftex.def)             Requested size: 330.42041pt x 213.45103pt.
  [3 <./pseudocodice_perceptron.png>] [4] [5]
-Overfull \hbox (42.20845pt too wide) in paragraph at lines 125--142
+Overfull \hbox (57.23514pt too wide) in paragraph at lines 115--150
  [][] 
  []
 
-[6] (LorenzoRicci_ai.aux) ) 
+
+Overfull \hbox (52.23514pt too wide) in paragraph at lines 154--189
+ [][] 
+ []
+
+[6] [7] (LorenzoRicci_ai.aux) ) 
 Here is how much of TeX's memory you used:
  3044 strings out of 476326
  52336 string characters out of 5783910
- 1860660 words of memory out of 5000000
+ 1873660 words of memory out of 5000000
  23430 multiletter control sequences out of 15000+600000
  574688 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,10n,62p,920b,230s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,11n,62p,989b,230s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {C:/Users/Lorenzo Ricci/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C:/Users/Lorenzo Ricci/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/Lorenzo Ricci/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}{C:/Users/Lorenzo Ricci/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}{C:/Users/Lorenzo Ricci/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}<C:/Users/Lorenzo Ricci/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/Lorenzo Ricci/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/Lorenzo Ricci/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/Lorenzo Ricci/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/Lorenzo Ricci/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi7.pfb><C:/Users/Lorenzo Ricci/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/Lorenzo Ricci/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/Lorenzo Ricci/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/Lorenzo Ricci/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/Lorenzo Ricci/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/Lorenzo Ricci/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb>
-Output written on LorenzoRicci_ai.pdf (6 pages, 564963 bytes).
+Output written on LorenzoRicci_ai.pdf (7 pages, 571855 bytes).
 PDF statistics:
- 91 PDF objects out of 1000 (max. 8388607)
+ 96 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

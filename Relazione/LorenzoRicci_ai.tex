@@ -68,57 +68,86 @@
 	\end{itemize}
 	Per l'implementazione delle operazioni matematiche all'interno di questi metodi è stata utilizzata la libreria "numpy".
     \subsection{MyDualPerceptron}
-    La mia implementazione dell'algoritmo consiste nella classe MyDualPerceptron. Il costruttore prende in ingresso la tipologia di kernel che si vuole utilizzare, ovvero un numero: 1 per il kernel lineare, 2 per il kernel polinomiale e 3 per l'rbf kernel. Lo pseudocodice mostrato in Table 2.2 viene implementato nel metodo \textit{train()}, che prende in ingresso X, y, epochs. In particolare:
+    La mia implementazione dell'algoritmo consiste nella classe MyDualPerceptron. 
+	Il costruttore non prende alcun paramento in ingresso ed inizializza a \textit{None} il vettore dei pesi in forma duale \textit{a}, il bias \textit{b} 
+	e il valore \textit{R}. Lo pseudocodice mostrato in Table 2.2 viene implementato nel metodo \textit{train()}, 
+	che prende in ingresso X, y, kernel e epochs. In particolare:
     \begin{itemize}
     	\item X: Porzione di data set, ovvero i dati che verrano utilizzati per addestrare il vettore alpha e il bias.
     	\item y: Porzione di data set, ovvero il vettore dei target di addestramento.
+    	\item kernel: Metodo kernel che verrà utilizzato.
     	\item epochs: il numero di epoche(iterazioni) del ciclo \textit{for} sul quale si vuole addestrare l'algoritmo.
     \end{itemize}
-	Inoltre all'interno del metodo \textit{train()}, in base al tipo di kernel scelto dall'utente vengono mappati i dati di addestramento X e quindi creata la matrice K (nsamples,nsamples). Infine, si utilizza un ciclo \textit{for} per implementare il repeat dal quale si uscirà quando all'interno del ciclo for interno non ci saranno errori.
-    Una volta eseguita la funzione di \textit{train()} che addestra i propri parametri alpha e b (bias), verrà chiamato il metodo \textit{predict()} che prende anch'esso in ingresso X e y, i quali però non saranno uguali a quelli del \textit{train()}, ma saranno un'altra porzione di data set che viene utilizzata per testare l'accuracy dell'algoritmo nel predire i dati del target in output.
+	All'interno del metodo \textit{train()}, vengono inizializzati \textit{n\_samples}, \textit{a}, \textit{b} ed \textit{R}. Infine, si utilizza un ciclo \textit{for} per implementare il repeat dal quale si uscirà quando all'interno del ciclo for interno non ci saranno errori, per ritornare i parametri di classificazione addestrati \textit{a} e \textit{b}.
+    Una volta eseguita la funzione di \textit{train()}, verrà chiamato il metodo \textit{predict()} che prende anch'esso in ingresso: X e y, i quali però non saranno uguali a quelli del \textit{train()}, ma saranno un'altra porzione di data set che viene utilizzata per testare l'accuracy dell'algoritmo nel predire i dati del target in output, i paramentri del classificatore {a} e {b} e lo stesso metodo kernel utilizzato per l'addestramento.
     \subsection{Main}
-	Lo scopo principale della classe \textit{Main} è quello di leggere uno dei quattro data set messi a disposizione. Anche questi potranno essere scelti scrivendo un numero a scelta, in particolare:
+	Lo scopo principale della classe \textit{Main} è quello di leggere uno dei quattro data set messi a disposizione. 
+	Anche questi potranno essere scelti scrivendo un numero a scelta, in particolare:
 	\begin{itemize}
 		\item 1: Breast Cancer Wisconsin (Diagnostic)
 		\item 2: Adult
-		\item 3: Heart Disease
-		\item 4: Rice (Cammeo and Osmancik)
+		\item 3: Rice (Cammeo and Osmancik)
+		\item 4: King-Rook vs King-Pawn
 	\end{itemize}
+	\subsection{Preprocessing}
+    Per ogni data set viene fatto un lavoro a priori di \textit{preprocessing} per rimuovere dati mancanti, elimare dati "rumorosi" e normalizzarli, cioè portare ogni dato a scala comune, in modo che questi possono essere confrontati tra di loro correttamente. Ciò aiuta a evitare che attributi con valori più elevati siano più dominanti rispetto a quelli con valori più bassi durante la fase di addestramento.
+	Di seguito viene descritto quello che è stato fatto per ogni dataset:
+	\begin{itemize}
+		\item Breast Cancer Winsconsin (Diagnostic): E' stata normalizzata ogni colonna del dataset attraverso la libreria \textit{sklearn.preprocessing} utilizzando il metodo \textit{fit\_tranform()} di \textit{StandardScaler}.
+		\item Adult: All'interno di questo data set, data la presenza di valori mancanti questi sono state droppate le colonne che li contenevano. Fatto questo, sono state droppate anche le colonne che fornivano valori "rumorosi". Infine, associo un indice ad ogni tipologia di variabile che può assumere quell'attributo.
+		\item Rice (Cammeo \& Osmancik): E' stata normalizzata ogni colonna del dataset attraverso la libreria \textit{sklearn.preprocessing} utilizzando il metodo \textit{fit\_tranform()} di \textit{StandardScaler}.
+		\item King-Rook vs King-Pawn: All'interno di questo data set sono presenti per ogni attributo delle variabili categoriche quindi, utilizzo la libreria \textit{sklearn.preprocessing} per utilizzare il metodo \textit{fit\_tranform()} di \textit{LabelEncoder}. Una volta fatto questo vado a normalizzare i dati attraverso la libreria \textit{sklearn.preprocessing} utilizzando il metodo \textit{fit\_tranform()} di \textit{StandardScaler}.
+	\end{itemize} 
 	Da ogni data set vengono prese due porzioni: la prima X, che contiene tutte le colonne e le righe dei dati che servono all'algoritmo per dedurre il problema di classificazione binaria, mentre la seconda y che contiene il vettore dei target. Il programma sfrutta: la libreria "numpy" per eseguire l'operazione \textit{where()}, che modifica i valori interni in base a un vincolo per impostarli ad 1 o -1, la libreria "pandas" per leggere i data set in formato "csv" e prendere le porzioni di data set interessato grazie al metodo \textit{iloc()} e infine la libreria "sklearn" per i metodi \textit{train\_test\_split()} e \textit{accuracy\_score()} per, rispettivamente, dividere X e y in un parte destinata all'addestramento e una parte invece destinata al test e al calcolo dell'accuracy della predizione finale.
 	Successivamente vengono chiamati i metodi \textit{train()} e \textit{predict()} per l'esecuzione dell'addestramento dell'algoritmo e la predizione sui dati di test. Inoltre, viene calcolato anche il tempo che l'algoritmo impiega a svolgere i propri metodi, grazie ad un ulteriore libreria "timeit".
 	\section{Analisi}
-	All'interno di questa sezione viene analizzata l'accuracy dell'algoritmo DualPerceptron nel riuscire a predire i dati di test dei vari data set, utilizzando le varie tipologie di kernel. Di seguito viene mostrata una tabella con tutti i calcoli dell'accuracy.  
-	Analizzando nel dettaglio i risultati e supponendo che la mole di dati di addestramento sia il 75\% e il 25\% di test e che l'algoritmo è stato addestrato su 1000 epoche, vediamo che:
+	All'interno di questa sezione viene analizzata l'accuracy dell'algoritmo DualPerceptron nel riuscire a predire i dati di test dei vari data set, utilizzando le varie tipologie di kernel. Alla fine viene mostrata una tabella con tutti i calcoli del tempo che è risultato necessario nell'addestrare e nel predirede le matrici rispettivamente, di train e di test.  
+	Analizzando nel dettaglio i risultati e supponendo che la mole di dati di addestramento sia 80\% per addestrare e il 20\% per il test e che l'algoritmo è stato addestrato su 1000 epoche, vediamo che:
 	\begin{itemize}
-		\item Breast Cancer Winsconsin (Diasgnostic): Questo data set contiene 30 colonne(n\_features) e 569 righe(n\_samples) e ha lo scopo di utilizzare le 30 caratteristiche delle cellule presenti nei campioni per classificarli in due categorie: benigni o maligni. Sia il kernel lineare che polinomiale non hanno ottimi risultati, mentre il kernel rbf riesce ad ottenere un risultato ottimo con un valore di gamma>=17. Con valori di gamma più piccoli il vettore predetto \textit{y\_pred} ritornava in alcuni punti il valore 0.
-		\item Adult: Questo è il più grande data set con 14 colonne e 32.581 righe, e ha lo scopo di predire, in base a dati di tipo demografico di persone adulte, se un individuo guadagna più o meno di 50.000 euro. In questo caso tutte le tipologie di kernel hanno fornito un perfetta accuracy. Da notare però, l'elevato tempo di addestramento e predizione dei dati.
-		\item Heart Disease: Questo data set contiene 13 colonne e 1026 righe e ha lo scopo di classificare i pazienti in base alla presenza o assenza di malattie cardiache. Sia il kernel lineare che polinomiale non hanno dato buoni risultati, anche con valori di \textit{d} alti l'accuracy non cambia. L'rbf kernel invece non ha fornito un risultato ottimo ma, con valori di gamma compresi tra 1/100 e 1/20, ma accettabile.
-		\item Rice (Cammeo and Osmancik): L'ultimo data set contiene 7 colonne e 3810 righe e ha lo scopo di prevedere la composizione chimica del riso in base alle sue caratteristiche geografiche e varietali, in particolare se è "Cammeo" o "Osmancik". Notiamo in questo data set, come in Adult, una grande necessità di tempo nell'addestrare i dati. Migliori prestazioni da parte del kernel lineare rispetto a quello polinomiale ma comunque poco accettabili. Invece con valori di gamma molto alti l'rbf riesce a predire con una perfetta accuracy.
+		\item Breast Cancer Winsconsin (Diasgnostic): Questo data set contiene 30 colonne(n\_features) e 569 righe(n\_samples) e ha lo scopo di utilizzare le 30 caratteristiche delle cellule presenti nei campioni per classificarli in due categorie: benigni o maligni. Guardando la tabella si nota una prestazione molto buona per ogni tipologia di kernel, con un accuracy che varia dal 92\% al 96\%. Le differenze sostanziali tra i kernel si notano sui tempi di addestramento del dataset in particolare, buono il kernel polinomiale con d = 3, mentre in generale ancora meglio rbf. 
+		\item Adult: Questo è il più grande data set con 14 colonne e 32.581 righe, e ha lo scopo di predire, in base a dati di tipo demografico di persone adulte, se un individuo guadagna più o meno di 50.000 euro. Le n\_features a disposizione da 14 sono diventate 7 dopo aver preprocessato i dati mentre, gli per gli n\_samples sono stati presi in considerazione i primi 1000 a causa dell'elevato tempo di addestramento su 48000 esempi circa. Guardando la tabella si nota un livello di accuracy in media intorno al 74\% per i vari kernel, con un leggero miglioramento da parte del kernel polinomiale con d=3 e un sensibile peggioramento con d=4. Rbf è leggermente più performante del polinomiale ma i tempi di addestramento aumentano sensibilmente.
+		\item Rice (Cammeo and Osmancik): Questo data set contiene 3810 n\_samples e 7 n\_features e ha lo scopo di prevedere la composizione chimica del riso in base alle sue caratteristiche geografiche e varietà, in particola se è "Cammeo" o "Osmancik". Guardando la tabella notiamo che il kernel lineare in addestramento ci mette un tempo decisamente alto pari a 2 ore e 16 minuti. Il kernel polinomiale raggiunge risultati ottimi con d=2 e d=4, mentre con d=3 e d=5 si nota un netto peggioramento. Infine, rbf impiega in generale il doppio del tempo di quello polinomiale ma i risultati rimangono ottimi.
+		\item King-Rook vs King-Pawn: Questo data set contiene 3196 n\_samples e 36 n\_features e ha lo scopo di rappresentare una versione semplificata del gioco degli scacchi, focalizzandosi solo sulla configurazione delle pedine specifiche menzionate nel titolo. Guardando la tabella come per il dataset Rice anche in questo caso il kernel lineare fa fatica con un tempo di addestramento pari a 2h e 1 minuto, ma in generale ogni metodo kernel riesce a dare buoni risultati con l'accuracy migliore riscontrata con il kernel polinomiale con d=4 con 97.18\%.
 	\end{itemize}
-    Dai risultati sperimentali si nota subito una migliore capacità generale da parte del kernel rbf di separare i dati, rispetto a quello lineare e polinomiale. I risultati non ottimali degli altri due potrebbero dipendere da un scarsa capacità di quest'ultimi nel separare dati di maggiore difficoltà, risultati migliori potrebbero essere ottenuti aumentando il numero di epoche con cui viene addestrato l'algoritmo. 
-	Questa conclusione nasce dall'analisi del vettore alpha nel momento in cui ha finito il suo addestramento e che possiede al suo interno molti valori pari a 1000. Questo risultato significa che le epoche non sono state sufficienti alla classificazione di quei punti, di conseguenza un aumento di epoche sarà necessario per migliori prestazioni future, ovviamente a discapito del tempo di esecuzione.
-	Quest'ultimo è elevato per i metodi \textit{train()} e \textit{predict()} per i data set Adult e Rice può dipendere da due fattori: il primo è il maggiore numero di esempi(righe), in particolare Adult, e il secondo invece una maggiore difficoltà dei dati stessi.
-	\newpage
+    In generale guardando i dati sperimentali sulle tabelle si nota che l'rbf kernel in generale è il migliore nel separare i dati anche se a volte questo ha un costo in termini di tempo, mentre quello lineare non disponendo di un valore che può variare, come invece hanno quello polinomiale e rbf, in generale lo si potrebbe definire più inferiore rispetto agli altri due nella separazione. Infine, per il dataset Adult avevo eseguito ulteriori test su 3000 samples per vedere se effettivamente aumentava solo il tempo di addestramento o anche l'accuracy. Si nota che per il kernel lineare il tempo aumenta in maniera esponenziale passando da 537 secondi a 6340 secondi, con un peggioramento dell'accuracy di 0.4\%. Per il kernel polinomiale invece, con d=2 il tempo aumenta di 200 secondi circa, ma l'accuracy aumenta del 2.4\%. Infine per il test rbf il test con gamma=1 ecc...
 	\begin{table}[htbp]
 	\centering
 	\begin{tabular}{|c|c|c|}
 	  \hline
-	  \multicolumn{1}{|c|}{} & \multicolumn{1}{c|}{Breast Cancer Winsconsin} & \multicolumn{1}{c|}{Adult} \\
+	  \multicolumn{1}{|c|}{} & \multicolumn{1}{c|}{Breast Cancer Winsconsin(Diagnostic)} & \multicolumn{1}{c|}{Adult} \\
 	  \hline
-	  \multirow{3}{*}{Linear Kernel} & & \\
-	  & & \\
-	  & & \\
+	  \multirow{3}{*}{Linear Kernel} & Time take to train = 211s & Time taken to train = 537.7s\\
+	  & Time taken to predict = 0.04s & Time taken to predict = 0.2s\\
+	  & Accuracy sul set di test: 0.96 & Accuracy sul set di test: 0.74\\
 	  \hline
-	  \multirow{3}{*}{Polynomial Kernel} & & \\
-	  & & \\
-	  & & \\
+	  \multirow{12}{*}{Polynomial Kernel} & (d=2): Time taken to train = 317s & (d=2): Time taken to train = 604s \\
+	  & Time taken to predict = 0.07s & Time taken to predict = 0.24s\\
+	  & Accuracy sul set di test: 0.947s & Accuracy sul set di test 0.73666\\
+	  & (d=3): Time taken to train = 7.73s & (d=3): Time taken to train = 623.9s\\
+	  & Time taken to predict = 0.07s & Time taken to predict = 0.24s\\
+	  & Accruacy sul set di test = 0.956s & Accuracy sul set di test = 0.73666\\
+	  & (d=4): Time taken to train = 13.97s & (d=4): Time taken to train = 753.4ss\\
+	  & Time to predict = 0.07s & Time taken to predict = 0.18s\\
+	  & Accuracy sul set di test = 0.938 & Accuracy sul set di test = 0.58\\
+	  & (d=5): Time taken to train = 43.87s & (d=5): Time taken to train = s\\
+	  & Time taken to predict = 0.066s & Time taken to predict = s\\
+	  & Accuracy sul set di test = 0.921 & Accuracy sul set di test = \\
 	  \hline
-	  \multirow{3}{*}{Radial Basis Function} & & \\
-	  & & \\
-	  & & \\
+	  \multirow{12}{*}{Radial basis Function} & (gamma=1):Time taken to train = 2.5s & (gamma = 1): Time taken to train = 2050.88s\\
+	  & Time taken to predict = 0.15s& Time taken to predict = 0.46s\\
+	  & Accuracy sul set di test: 0.939 & Accuracy sul set di test = 0.76\\
+	  & (gamma=2): Time taken to train = 2.5s & (gamma = 2): Time taken to train = 1615s\\
+	  & Time taken to predict = 0.15s & Time taken to predict = 0.656s\\
+	  & Accruacy sul set di test = 0.929 & Accuracy sul set di test = 0.75\\
+	  & (gamma=0.1): Time taken to train = 4.36s & (gamma = 3): Time taken to train = 1930s\\
+	  & Time taken to predict = 0.15s & Time taken to predict = 0.5s\\
+	  & Accuracy sul set di test = 0.947 & Accuracy sul set di test = 0.765\\
+	  & (gamma=0.5): Time taken to train = 2.56s & (gamma = 0.1): Time taken to train = 3601.8s\\
+	  & Time taken to predict = 0.16s & Time taken to predict = 0.458s\\
+	  & Accuracy sul set di test = 0.964 & Accuracy sul set di test = 0.775\\
 	  \hline
 	\end{tabular}
-	\caption{Prima tabella}
+	\caption{Tabella Breast Cancer Winsconsin (Diagnostic) e Adult}
   \end{table}
   \begin{table}[htbp]
 	\centering
@@ -126,19 +155,37 @@
 	  \hline
 	  \multicolumn{1}{|c|}{} & \multicolumn{1}{c|}{Rice \& Cammeo} & \multicolumn{1}{c|}{King-Rook\_vs\_King-Pawn} \\
 	  \hline
-	  \multirow{3}{*}{Linear Kernel} & Time take to train the data = 8178s   & Time taken to train the data is 7245s\\
-	  & Time taken to predict the data = 2.72s & Time taken to predict the target is 1.4s\\
+	  \multirow{3}{*}{Linear Kernel} & Time take to train = 8178s   & Time taken to train = 7245s\\
+	  & Time taken to predict = 2.72s & Time taken to predict = 1.4s\\
 	  & Accuracy sul set di test: 0.87 & Accuracy sul set di test: 0.9687\\
 	  \hline
-	  \multirow{3}{*}{Polynomial Kernel} & (d=2):Time taken to train the data is 24s& (d=2):Time taken to predict the data is 302s \\
-	  & Time taken to predict the target is 2.45s& Time taken to predict the data is 2.1s\\
-	  & Accuracy: 1.0 & Accuracy sul set di test 0.9671\\
+	  \multirow{12}{*}{Polynomial Kernel} & (d=2): Time taken to train = 24s & (d=2): Time taken to predict = 302s \\
+	  & Time taken to predict = 2.45s & Time taken to predict = 2.1s\\
+	  & Accuracy sul set di test: 1.0 & Accuracy sul set di test 0.9671\\
+	  & (d=3): Time taken to train = 25s & (d=3): Time taken to train = 100.28s\\
+	  & Time taken to predict = 2.6s & Time taken to predict = 2.08s\\
+	  & Accruacy sul set di test = 0.92 & Accuracy sul set di test = 0.9702\\
+	  & (d=4): Time taken to train = 25.22s & (d=4): Time taken to train = 77.35s\\
+	  & Time to predict = 2.62s & Time taken to predict = 4.9s\\
+	  & Accuracy sul set di test = 1.0 & Accuracy sul set di test = 0.9718\\
+	  & (d=5): Time taken to train = 24.5s & (d=5): Time taken to train = 140.8s\\
+	  & Time taken to predict = 2.6s & Time taken to predict = 1.95s\\
+	  & Accuracy sul set di test = 0.803 & Accuracy sul set di test = 0.9718\\
 	  \hline
-	  \multirow{3}{*}{Radial Basis Function} &&(gamma=1): Time to train: 91.4s\\
-	  && Time to predict: 4.3s \\
-	  && Accuracy sul set di test: 0.93 \\
+	  \multirow{12}{*}{Radial basis Function} & (gamma=1):Time taken to train = 53.72 & (gamma = 1): Time taken to train = 91.3s\\
+	  & Time taken to predict = 5.9s& Time taken to predict = 4.3s\\
+	  & Accuracy sul set di test: 1.0 & Accuracy sul set di test = 0.928\\
+	  & (gamma=2): Time taken to train = 58s & (gamma = 2): Time taken to train = 73.2s\\
+	  & Time taken to predict = 6.94s & Time taken to predict = 4.4s\\
+	  & Accruacy sul set di test = 1.0 & Accuracy sul set di test = 0.928\\
+	  & (gamma=0.1): Time taken to train = 66.9s & (gamma = 0.1): Time taken to train = 117.3s\\
+	  & Time taken to predict = 6.7s & Time taken to predict = 4.2s\\
+	  & Accuracy sul set di test = 1.0 & Accuracy sul set di test = 0.9624\\
+	  & (gamma=0.5): Time taken to train = 60s & (gamma = 0.2): Time taken to train = 169.9s\\
+	  & Time taken to predict = 6.9s & Time taken to predict = 4.1s\\
+	  & Accuracy sul set di test = 1.0 & Accuracy sul set di test = 0.9687\\
 	  \hline
 	\end{tabular}
-	\caption{Seconda tabella}
+	\caption{Tabella Rice \& Cammeo e King-Rook vs King-Pawn}
   \end{table}
 \end{document}

@@ -8,7 +8,7 @@ class KernelFunctions:
     def linear_kernel(self, x1, x2):
         return np.dot(x1, x2)
 
-    def polynomial_kernel(self, x1, x2, degree=2):
+    def polynomial_kernel(self, x1, x2, degree=5):
         return (np.dot(x1, x2) + 1)**degree
 
     def rbf_kernel(self, x1, x2, gamma=0.1):

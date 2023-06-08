@@ -7,7 +7,6 @@ class MyDualPerceptron:
         self.a = None #Vettore dei pesi nella forma duale 
         self.b = None #Bias
         self.R = None #Massima distanza euclidea nel mio set di Dati 
-        self.kernel = KernelFunctions() 
 
     def train(self, X, y, kernel, epochs=1000):
  
