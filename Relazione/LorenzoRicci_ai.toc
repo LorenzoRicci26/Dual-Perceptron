@@ -1,7 +1,0 @@
-\contentsline {section}{\numberline {1}Introduzione algoritmo}{3}{}%
-\contentsline {section}{\numberline {2}Implementazione}{3}{}%
-\contentsline {subsection}{\numberline {2.1}KernelFunctions}{4}{}%
-\contentsline {subsection}{\numberline {2.2}MyDualPerceptron}{4}{}%
-\contentsline {subsection}{\numberline {2.3}Main}{4}{}%
-\contentsline {subsection}{\numberline {2.4}Preprocessing}{5}{}%
-\contentsline {section}{\numberline {3}Analisi}{5}{}%
